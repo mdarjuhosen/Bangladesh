@@ -1,0 +1,2634 @@
+<!doctype html>
+<html lang="bn" data-bs-theme="dark">
+  <head>
+    <!-- =========================
+     HEAD / META
+========================= -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arju's Journey | My Travel Memories</title>
+    <meta
+      name="description"
+      content="A personal travel diary documenting places, photos, memories and stories from Bangladesh."
+    />
+    <meta
+      name="keywords"
+      content="Arju's Journey, travel diary, Bangladesh, travel memories, photos"
+    />
+    <meta property="og:title" content="Arju's Journey | My Travel Memories" />
+    <meta property="og:description" content="Every Place Has a Story." />
+    <meta property="og:type" content="website" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+/* ===== TOKENS ===== */
+:root {
+  --ink: #14110d;
+  --paper: #faf8f4;
+  --card: #fff;
+  --sea: #a8741a;
+  --sea2: #8a5c10;
+  --gold: #f4d58d;
+  --on-sea: #fff;
+  --mute: #6c665c;
+  --line: #e6e1d8;
+  --sh: 0 1px 2px rgba(20, 17, 13, .05), 0 22px 44px -26px rgba(20, 17, 13, .35);
+  --serif: "Cormorant Garamond", "Hind Siliguri", serif;
+  --sans: "Manrope", "Hind Siliguri", system-ui, sans-serif
+}
+
+[data-bs-theme=dark] {
+  --ink: #f3efe7;
+  --paper: #0a0c10;
+  --card: #12161d;
+  --sea: #e0b04f;
+  --sea2: #f4d58d;
+  --on-sea: #14110d;
+  --mute: #9aa1ad;
+  --line: #232a35;
+  --sh: 0 1px 2px rgba(0, 0, 0, .5), 0 22px 44px -26px rgba(0, 0, 0, .9)
+}
+
+* {
+  -webkit-tap-highlight-color: transparent
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  padding-bottom: 70px;
+  line-height: 1.7
+}
+
+h1,
+h2,
+h3,
+h4,
+.brand,
+.stat b {
+  font-family: var(--serif);
+  letter-spacing: -.01em
+}
+
+a {
+  color: var(--sea);
+  text-decoration: none
+}
+
+:focus-visible {
+  outline: 2px solid var(--sea);
+  outline-offset: 3px
+}
+
+.muted {
+  color: var(--mute)
+}
+
+img {
+  max-width: 100%
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
+}
+
+#prog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  z-index: 1100;
+  background: linear-gradient(90deg, var(--sea), var(--gold))
+}
+
+body:not(.over-hero) #app {
+  padding-top: 78px
+}
+
+/* ===== NAVBAR (transparent on hero, solid after scroll) ===== */
+.nav-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  color: #fff;
+  transition: background .3s, border-color .3s
+}
+
+.nav-top .container {
+  padding-block: .6rem
+}
+
+.nav-top.solid,
+body:not(.over-hero) .nav-top {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line)
+}
+
+.nav-top .btn,
+.nav-top .nav-link,
+.nav-top .brand {
+  color: inherit !important
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.55rem;
+  letter-spacing: .08em;
+  white-space: nowrap
+}
+
+.nav-top .nav-link {
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: .5rem .85rem;
+  opacity: .85;
+  position: relative
+}
+
+.nav-top .nav-link:hover {
+  opacity: 1
+}
+
+.nav-top .nav-link:after {
+  content: "";
+  position: absolute;
+  left: .85rem;
+  right: .85rem;
+  bottom: .15rem;
+  height: 2px;
+  background: var(--sea);
+  transform: scaleX(0);
+  transition: .25s
+}
+
+.nav-top .nav-link:hover:after {
+  transform: scaleX(1)
+}
+
+#sbar input {
+  border-radius: 999px;
+  padding: .75rem 1.3rem;
+  box-shadow: var(--sh)
+}
+
+.form-control,
+.form-select {
+  background: var(--card);
+  color: var(--ink);
+  border-color: var(--line)
+}
+
+.offcanvas {
+  background: var(--paper);
+  color: var(--ink);
+  width: min(320px, 86vw)
+}
+
+.mi {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 1.05rem .2rem;
+  color: var(--ink);
+  font-weight: 600;
+  text-align: left
+}
+
+.mi i {
+  color: var(--sea);
+  font-size: 1.2rem
+}
+
+.mi:hover {
+  color: var(--sea)
+}
+
+/* ===== BUTTONS ===== */
+.btn-sea,
+.btn-ghost {
+  border-radius: 999px;
+  padding: .95rem 2rem;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: .25s
+}
+
+.btn-sea {
+  background: var(--sea);
+  color: var(--on-sea);
+  border: 1px solid var(--sea)
+}
+
+.btn-sea:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #14110d;
+  transform: translateY(-2px)
+}
+
+.btn-ghost {
+  color: #fff;
+  background: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .55)
+}
+
+.btn-ghost:hover {
+  background: #fff;
+  color: #14110d
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding: 7rem 0 9rem;
+  background: #0a0c10
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 9, 12, .62) 0%, rgba(8, 9, 12, .42) 55%, var(--paper) 100%), url("./Golden\ Sunrise\ Over\ Lush\ River\ Valleys.png") center/cover;
+  transform: scale(1.06);
+  animation: slowzoom 28s ease-in-out infinite alternate
+}
+
+@keyframes slowzoom {
+  to {
+    transform: scale(1.13)
+  }
+}
+
+.hero-in {
+  position: relative;
+  z-index: 2
+}
+
+.hero .in {
+  animation: rise 1s ease both;
+  margin-inline: auto
+}
+
+.hero .d-flex {
+  justify-content: center
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .9rem;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--gold)
+}
+
+.eyebrow:before,
+.eyebrow:after {
+  content: "";
+  width: 36px;
+  height: 1px;
+  background: currentColor
+}
+
+.eyebrow.dark {
+  color: var(--sea)
+}
+
+.hero h1 {
+  font-size: clamp(3.6rem, 14vw, 10rem);
+  font-weight: 600;
+  line-height: .88;
+  margin: 1.3rem 0 1rem
+}
+
+.hero .grad {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold)
+}
+
+.hero .tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 4vw, 2.3rem);
+  margin-bottom: .8rem
+}
+
+.hero .lead {
+  max-width: 34rem;
+  margin-inline: auto;
+  font-size: 1.1rem;
+  opacity: .92
+}
+
+.hero .trio {
+  font-size: .72rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  opacity: .7;
+  margin-bottom: 2rem
+}
+
+/* ===== STATS ===== */
+.stats {
+  margin-top: -96px;
+  position: relative;
+  z-index: 3
+}
+
+.stat {
+  padding: 1.4rem 1rem;
+  text-align: center;
+  background: color-mix(in srgb, var(--card) 86%, transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--sh)
+}
+
+.stat b {
+  display: block;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--sea)
+}
+
+.stat .muted {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-top: .4rem
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 5.5rem 0
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .8rem;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--sea);
+  margin-bottom: .6rem
+}
+
+.kicker:before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: currentColor
+}
+
+.sec-h {
+  font-size: clamp(2.5rem, 6.5vw, 4.3rem);
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: .8rem
+}
+
+section>.container>p.muted {
+  max-width: 40rem;
+  margin-bottom: 2rem
+}
+
+/* ===== DIVISION RAIL + POSTER CARD ===== */
+.rail {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: .4rem .2rem 1.4rem;
+  scrollbar-width: none
+}
+
+.rail::-webkit-scrollbar {
+  display: none
+}
+
+.rail-i {
+  flex: 0 0 min(74vw, 290px);
+  scroll-snap-align: start
+}
+
+.rail-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: .5rem;
+  margin: -1rem 0 .6rem
+}
+
+.rail-btns button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  transition: .25s
+}
+
+.rail-btns button:hover {
+  background: var(--sea);
+  border-color: var(--sea);
+  color: var(--on-sea)
+}
+
+.dcard {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/4.2;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .4s, box-shadow .4s
+}
+
+.dcard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sh)
+}
+
+.dc-img {
+  position: absolute;
+  inset: 0
+}
+
+.dc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s
+}
+
+.dcard:hover .dc-img img {
+  transform: scale(1.08)
+}
+
+.dcard:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8, 9, 12, .25) 0%, transparent 30%, rgba(8, 9, 12, .92) 100%)
+}
+
+.dcard.off .dc-img img {
+  filter: grayscale(1) brightness(.6)
+}
+
+.dcard .num {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  left: 18px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.7rem;
+  color: var(--gold)
+}
+
+.dcard .dot {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  right: 16px;
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .15rem .65rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .16);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .4)
+}
+
+.dc-body {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.2rem
+}
+
+.dc-body h3 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin: 0 0 .3rem
+}
+
+.dc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .2rem .9rem;
+  font-size: .78rem;
+  opacity: .88
+}
+
+.dc-bar {
+  height: 3px;
+  margin: .8rem 0;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .25);
+  overflow: hidden
+}
+
+.dc-bar i {
+  display: block;
+  height: 100%;
+  background: var(--gold)
+}
+
+.dc-go {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold)
+}
+
+/* ===== PLACE CARD (poster) ===== */
+.pcard {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/5;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .4s, box-shadow .4s
+}
+
+.pcard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sh)
+}
+
+.pc-img {
+  position: absolute;
+  inset: 0
+}
+
+.pc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s
+}
+
+.pcard:hover .pc-img img {
+  transform: scale(1.08)
+}
+
+.pcard:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8, 9, 12, .2) 0%, transparent 35%, rgba(8, 9, 12, .94) 100%)
+}
+
+.pc-rate {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  right: 16px;
+  font-size: .78rem;
+  font-weight: 700;
+  padding: .2rem .7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .16);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .4)
+}
+
+.pc-rate i {
+  color: var(--gold)
+}
+
+.pc-body {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.3rem
+}
+
+.pc-meta {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold)
+}
+
+.pc-body h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.05;
+  margin: .3rem 0 .4rem
+}
+
+.pc-body p {
+  margin: 0;
+  font-size: .9rem;
+  color: rgba(255, 255, 255, .82);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden
+}
+
+.pc-go {
+  display: inline-block;
+  margin-top: .8rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold)
+}
+
+.pc-go i {
+  transition: .3s
+}
+
+.pcard:hover .pc-go i {
+  margin-left: .4rem
+}
+
+/* ===== DISTRICT CARD ===== */
+.kcard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: .7rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: .25s
+}
+
+.kcard:hover {
+  border-color: var(--sea);
+  transform: translateX(4px)
+}
+
+.kcard .av {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2a2418, #a8741a)
+}
+
+.kcard .av img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+.kcard h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.1
+}
+
+.badge-v,
+.badge-n {
+  border-radius: 999px;
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .12rem .65rem
+}
+
+.badge-v {
+  background: var(--sea);
+  color: var(--on-sea)
+}
+
+.badge-n {
+  background: var(--line);
+  color: var(--mute)
+}
+
+/* ===== FEATURED / CHIP ===== */
+.feat {
+  position: relative;
+  min-height: 480px;
+  border-radius: 28px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center
+}
+
+.feat .ov {
+  width: 100%;
+  padding: 2.6rem;
+  background: linear-gradient(transparent, rgba(8, 9, 12, .92))
+}
+
+.feat .ov:before {
+  content: "Featured";
+  display: inline-block;
+  margin-bottom: .8rem;
+  padding: .25rem .9rem;
+  border-radius: 999px;
+  background: var(--sea);
+  color: var(--on-sea);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase
+}
+
+.feat h3 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 600
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: .4rem 1rem;
+  margin: 0 .35rem .5rem 0
+}
+
+.chip:hover {
+  border-color: var(--sea)
+}
+
+/* ===== MAP ===== */
+.map-wrap {
+  max-width: 400px;
+  margin: auto;
+  padding: 1.4rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--sh)
+}
+
+.map-wrap svg {
+  width: 100%;
+  height: auto
+}
+
+.dv {
+  fill: var(--line);
+  stroke: var(--card);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: .25s
+}
+
+.dv.vis {
+  fill: var(--sea)
+}
+
+.dv:hover,
+.dv:focus {
+  fill: var(--gold);
+  outline: none
+}
+
+.map-wrap text {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--ink);
+  pointer-events: none
+}
+
+.map-wrap text.v {
+  fill: var(--on-sea)
+}
+
+/* ===== PAGE HEADER / BREADCRUMB ===== */
+.ph {
+  min-height: 56vh;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  background-size: cover;
+  background-position: center
+}
+
+.ph .ov {
+  width: 100%;
+  padding: 7rem 0 2.6rem;
+  background: linear-gradient(rgba(8, 9, 12, .5), rgba(8, 9, 12, .15) 40%, rgba(8, 9, 12, .88))
+}
+
+.ph h1 {
+  font-size: clamp(3rem, 9vw, 6.4rem);
+  font-weight: 600;
+  line-height: .95
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.4rem 0;
+  padding: 0;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  --bs-breadcrumb-divider-color: var(--mute)
+}
+
+/* ===== PLACE PAGE / GALLERY ===== */
+.info {
+  height: 100%;
+  padding: 1.1rem 1.2rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px
+}
+
+.info i {
+  color: var(--sea);
+  font-size: 1.3rem
+}
+
+h1 {
+  font-weight: 600
+}
+
+.story {
+  max-width: 68ch;
+  font-size: 1.15rem;
+  line-height: 2;
+  white-space: pre-line;
+  border-left: 3px solid var(--sea);
+  padding-left: 1.1rem
+}
+
+.gal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .6rem
+}
+
+.gal button {
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  background: var(--line)
+}
+
+.gal button:nth-child(4n+1),
+.gal button:nth-child(4n) {
+  grid-column: span 2;
+  aspect-ratio: 16/9
+}
+
+.gal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s
+}
+
+.gal button:hover img {
+  transform: scale(1.07)
+}
+
+@media(min-width:768px) {
+  .gal {
+    grid-template-columns: repeat(4, 1fr)
+  }
+}
+
+#lb {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 6, 9, .96);
+  touch-action: pan-y
+}
+
+#lb.on {
+  display: flex
+}
+
+#lb img {
+  max-width: 94vw;
+  max-height: 84vh;
+  object-fit: contain;
+  border-radius: 8px
+}
+
+#lb button {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .15);
+  color: #fff;
+  font-size: 1.3rem
+}
+
+#lb .x {
+  top: 14px;
+  right: 14px
+}
+
+#lb .p {
+  left: 10px
+}
+
+#lb .n {
+  right: 10px
+}
+
+#lb .c {
+  position: absolute;
+  bottom: 18px;
+  color: #fff;
+  font-size: .85rem;
+  letter-spacing: .1em
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--mute)
+}
+
+.empty i {
+  font-size: 3rem;
+  color: var(--sea)
+}
+
+/* ===== ABOUT (profile modal) ===== */
+.modal-content {
+  background: var(--card);
+  color: var(--ink);
+  border: 0;
+  border-radius: 24px
+}
+
+.prof {
+  overflow: hidden
+}
+
+.prof-x {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  padding: .7rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .5);
+  filter: invert(1);
+  opacity: 1
+}
+
+.prof-cover {
+  height: 170px;
+  background-size: cover;
+  background-position: center
+}
+
+.prof-head {
+  position: relative;
+  padding: 0 1.5rem 1.2rem
+}
+
+.prof-av {
+  width: 112px;
+  height: 112px;
+  margin-top: -56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--card)
+}
+
+.prof-actions {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem
+}
+
+.btn-pro,
+.btn-pro-o {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .4rem 1rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 700
+}
+
+.btn-pro {
+  background: var(--sea);
+  color: var(--on-sea)
+}
+
+.btn-pro-o {
+  border: 1px solid var(--sea);
+  color: var(--sea)
+}
+
+.btn-pro-o:hover {
+  background: var(--sea);
+  color: var(--on-sea)
+}
+
+.prof-name {
+  font-size: 2.3rem;
+  font-weight: 600;
+  margin: .6rem 0 0
+}
+
+.prof-name i {
+  font-size: 1.2rem;
+  color: var(--sea)
+}
+
+.hl {
+  font-size: 1rem
+}
+
+.meta {
+  font-size: .85rem;
+  color: var(--mute)
+}
+
+.prof-body {
+  display: grid;
+  gap: .8rem;
+  padding: 0 1rem 1.3rem
+}
+
+.pcardx {
+  padding: 1.2rem 1.3rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px
+}
+
+.pcardx h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: .6rem
+}
+
+.quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  border-left: 3px solid var(--sea);
+  padding-left: 1rem
+}
+
+.prof-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5rem;
+  text-align: center;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--mute)
+}
+
+.prof-stats b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2.3rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--sea)
+}
+
+.exp {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  width: 100%;
+  padding: .7rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  color: var(--ink);
+  text-align: left
+}
+
+.exp:last-child {
+  border-bottom: 0
+}
+
+.exp img {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover
+}
+
+.exp span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35
+}
+
+.exp small {
+  color: var(--mute)
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem
+}
+
+.skill {
+  padding: .2rem .85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: .82rem;
+  color: var(--mute)
+}
+
+.skill.on {
+  background: var(--sea);
+  border-color: var(--sea);
+  color: var(--on-sea)
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  margin-top: 3rem;
+  padding: 5rem 0 1.6rem;
+  background: #07080a;
+  color: #b9bdc6
+}
+
+.foot-brand {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: .9;
+  color: #fff
+}
+
+.foot-brand span {
+  font-style: italic;
+  color: var(--gold)
+}
+
+.site-footer .tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: .9rem 0
+}
+
+.site-footer .fh {
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: #7d838f;
+  margin-bottom: 1.1rem
+}
+
+.fl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .6rem
+}
+
+.fl a {
+  display: inline-block;
+  color: #b9bdc6;
+  transition: .25s
+}
+
+.fl a:hover {
+  color: var(--gold);
+  transform: translateX(4px)
+}
+
+.soc {
+  display: flex;
+  gap: .5rem
+}
+
+.soc a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 50%;
+  color: #fff;
+  transition: .25s
+}
+
+.soc a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #14110d
+}
+
+.foot-bottom {
+  margin-top: 3.2rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .85rem
+}
+
+.totop {
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase
+}
+
+.totop:hover {
+  color: var(--gold)
+}
+
+/* ===== MOBILE NAV / REVEAL ===== */
+.bnav {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1030;
+  display: flex;
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--sh)
+}
+
+.bnav button {
+  flex: 1;
+  border: 0;
+  background: none;
+  color: var(--mute);
+  padding: .55rem 0;
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase
+}
+
+.bnav button:hover,
+.bnav button:active {
+  color: var(--sea)
+}
+
+.bnav i {
+  display: block;
+  font-size: 1.25rem
+}
+
+@media(min-width:992px) {
+  .bnav {
+    display: none
+  }
+
+  body {
+    padding-bottom: 0
+  }
+}
+
+.rv {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s, transform .7s
+}
+
+.rv.on {
+  opacity: 1;
+  transform: none
+}
+
+@media(max-width:575px) {
+  section {
+    padding: 3.4rem 0
+  }
+
+  .hero {
+    padding-bottom: 7rem
+  }
+
+  .stats {
+    margin-top: -70px
+  }
+
+  .prof-actions {
+    position: static;
+    margin-top: .6rem
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    animation: none !important;
+    transition: none !important
+  }
+
+  .rv {
+    opacity: 1;
+    transform: none
+  }
+}
+</style>
+  </head>
+  <body>
+    <!-- =========================
+     NAVBAR
+========================= -->
+    <div id="prog"></div>
+<header class="nav-top">
+      <nav class="container d-flex align-items-center gap-2 py-2" aria-label="Main">
+        <a class="brand" href="#/">ARJU'S JOURNEY</a>
+        <div class="d-none d-lg-flex ms-4 gap-1">
+          <a class="nav-link" href="#/" data-go="top">Home</a
+          ><a class="nav-link" href="#/" data-go="journey">My Journey</a
+          ><a class="nav-link" href="#/" data-go="map">Map</a
+          ><a class="nav-link" href="#/" data-go="memories">Memories</a
+          ><a class="nav-link" href="#/" data-go="about">About</a>
+        </div>
+        <span class="ms-auto"></span
+        ><button class="btn btn-sm" id="sbtn" aria-label="Search" aria-expanded="false">
+          <i class="bi bi-search fs-5"></i>
+        </button>
+        <button class="btn btn-sm" id="theme" aria-label="Toggle dark mode">
+          <i class="bi bi-moon-stars"></i>
+        </button>
+        <button
+          class="btn btn-sm"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#menu"
+          aria-label="Menu"
+        >
+          <i class="bi bi-list fs-4"></i>
+        </button>
+      </nav>
+      <div id="sbar" class="container pb-2" hidden>
+        <input
+          id="q"
+          class="form-control"
+          type="search"
+          placeholder="Search place, district, memory…"
+          aria-label="Search"
+          autocomplete="off"
+        />
+      </div>
+    </header>
+    <div class="offcanvas offcanvas-start" id="menu" tabindex="-1" aria-label="Menu">
+      <div class="offcanvas-header">
+        <b class="brand">ARJU'S JOURNEY</b
+        ><button class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-grid gap-2 align-content-start">
+        <button class="mi" data-go="top"><i class="bi bi-house-door"></i>Home</button
+        ><button class="mi" data-go="journey"><i class="bi bi-signpost-split"></i>My Journey</button
+        ><button class="mi" data-go="map"><i class="bi bi-map"></i>Map</button
+        ><button class="mi" data-go="memories"><i class="bi bi-images"></i>Memories</button
+        ><button class="mi" data-go="about"><i class="bi bi-person-heart"></i>About</button>
+      </div>
+    </div>
+
+    <main id="app"></main>
+
+    <!-- =========================
+     FOOTER
+========================= -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <a class="foot-brand" href="#/">ARJU'S <span>Journey</span></a>
+            <p class="tagline">Every Place Has a Story.</p>
+            <p class="small opacity-75">My Places • My Memories • My Stories — একটি ব্যক্তিগত ভ্রমণ-ডায়েরি।</p>
+          </div>
+          <div class="col-6 col-lg-3">
+            <h3 class="fh">Explore</h3>
+            <ul class="fl">
+              <li><a href="#/" data-go="top">Home</a></li>
+              <li><a href="#/" data-go="journey">My Journey</a></li>
+              <li><a href="#/" data-go="map">Bangladesh Map</a></li>
+              <li><a href="#/" data-go="memories">Memories</a></li>
+              <li><a href="#/" data-go="about">About</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-3">
+            <h3 class="fh">Follow</h3>
+            <div class="soc">
+              <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://github.com" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <small>© 2026 Arju's Journey. All Rights Reserved.</small>
+          <a class="totop" href="#/" data-go="top">Back to top ↑</a>
+        </div>
+      </div>
+    </footer>
+    <nav class="bnav" aria-label="Mobile">
+      <button data-go="top"><i class="bi bi-house"></i>Home</button
+      ><button data-go="journey"><i class="bi bi-signpost-split"></i>Journey</button
+      ><button data-go="map"><i class="bi bi-map"></i>Map</button
+      ><button data-go="memories"><i class="bi bi-images"></i>Memories</button
+      ><button data-go="about"><i class="bi bi-person"></i>About</button>
+    </nav>
+    <div id="lb" role="dialog" aria-modal="true" aria-label="Gallery">
+      <button class="x" aria-label="Close">✕</button
+      ><button class="p" aria-label="Previous">‹</button><img alt="" /><button
+        class="n"
+        aria-label="Next"
+      >
+        ›
+      </button>
+      <div class="c"></div>
+    </div>
+
+    <!-- =========================
+     ABOUT (LinkedIn-style profile modal)
+========================= -->
+<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="about-title" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-sm-down">
+<div class="modal-content prof">
+<button type="button" class="btn-close prof-x" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal-body p-0">
+<div class="prof-cover" style="background-image:url('https://picsum.photos/seed/aboutcover/1200/420')"></div>
+<div class="prof-head">
+<img class="prof-av" src="https://picsum.photos/seed/arju/300/300" alt="Arju's profile photo">
+<div class="prof-actions">
+<a class="btn-pro" href="https://facebook.com" target="_blank" rel="noopener"><i class="bi bi-plus-lg"></i> Follow</a>
+<a class="btn-pro-o" href="https://instagram.com" target="_blank" rel="noopener"><i class="bi bi-instagram"></i> Instagram</a>
+<a class="btn-pro-o" href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+<h2 class="prof-name" id="about-title">Md Arju Hosen <i class="bi bi-patch-check-fill" title="Verified traveler"></i></h2>
+<p class="hl mb-0">Traveler • Storyteller • Photographer</p>
+<p class="meta mb-0"><i class="bi bi-geo-alt"></i> <span id="ab-meta">Bangladesh</span></p>
+</div>
+<div class="prof-body">
+<div class="pcardx">
+<h3>About</h3>
+<p class="quote">ভ্রমণ আমার কাছে শুধু নতুন জায়গা দেখা নয়, প্রতিটি জায়গার সঙ্গে একটি নতুন স্মৃতি তৈরি করা। এই Website-এ আমার দেখা জায়গা, তোলা ছবি এবং মনে থাকা গল্পগুলো সংরক্ষণ করছি।</p>
+<p class="muted mb-0">আমি আরজু — পথে পথে গল্প খুঁজি।</p>
+</div>
+<div class="pcardx">
+<h3>Journey in numbers</h3>
+<div class="prof-stats">
+<div><b id="ab-places">0</b>Places</div>
+<div><b id="ab-photos">0</b>Photos</div>
+<div><b id="ab-divs">0/8</b>Divisions</div>
+</div>
+</div>
+<div class="pcardx">
+<h3>Places visited</h3>
+<div id="ab-list"></div>
+</div>
+<div class="pcardx">
+<h3>Divisions explored</h3>
+<div class="skills" id="ab-skills"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+/* ========================= JAVASCRIPT ========================= */
+/* =====================================================================
+   কোড বোঝার গাইড (বাংলায়)
+   ---------------------------------------------------------------------
+   ১) নতুন জায়গা যোগ করার সহজ উপায়: DEMO তালিকায় নতুন একটি { … } ব্লক বসাও
+   ২) কোডে সরাসরি যোগ করতে চাইলে নিচের DEMO তালিকায় নতুন { ... } যোগ করো,
+      ফাইল সেভ করে ব্রাউজার রিফ্রেশ দিলেই নতুন ডেটা দেখাবে।
+   ৩) ছবি বদলাতে: DEMO-র cover ও gallery-তে নিজের ছবির লিংক বসাও।
+   ৪) Google Map চালু করতে: GOOGLE_MAPS_API_KEY-তে তোমার key বসাও।
+   ৫) সার্চ: উপরের 🔍 আইকনে ক্লিক করলে সার্চ বার খোলে।
+   এই স্ক্রিপ্ট কয়েকটি ভাগে সাজানো: সেটিংস → ডেটা → সাহায্যকারী ফাংশন →
+   পেজ (হোম/বিভাগ/জেলা/জায়গা/সার্চ) → রাউটার → সার্চ/লাইটবক্স/থিম।
+   ===================================================================== */
+
+/* ---- ১. সেটিংস: Google Maps key ---- */
+
+/* ╔═══════════════════════════════════════════╗
+   ║ JS-1: সেটিংস
+   ╚═══════════════════════════════════════════╝ — Maps key ও storage নাম */
+
+const GOOGLE_MAPS_API_KEY = "YOUR_API_KEY"; // Put a Maps Embed API key here for live maps
+const img = (s, w = 900, h = 600) => `https://picsum.photos/seed/${s}/${w}/${h}`; // replace with your own photos
+/* ---- ২. বিভাগ ও জেলার তালিকা (নাম বদলাবে না) ---- */
+
+/* ╔═══════════════════════════════════════════╗
+   ║ JS-2: বিভাগ ও জেলার তালিকা (৮ বিভাগ, ৬৪ জেলা) — এটা বদলাবেন না 
+   ╚═══════════════════════════════════════════╝ */
+const DIV = {
+  Dhaka: [
+    "ঢাকা বিভাগ",
+    "Dhaka,Gazipur,Narayanganj,Narsingdi,Munshiganj,Manikganj,Tangail,Kishoreganj,Faridpur,Gopalganj,Madaripur,Rajbari,Shariatpur",
+  ],
+  Chattogram: [
+    "চট্টগ্রাম বিভাগ",
+    "Chattogram,Cox's Bazar,Bandarban,Rangamati,Khagrachhari,Noakhali,Feni,Lakshmipur,Comilla,Chandpur,Brahmanbaria",
+  ],
+  Rajshahi: [
+    "রাজশাহী বিভাগ",
+    "Rajshahi,Bogura,Pabna,Sirajganj,Natore,Naogaon,Chapainawabganj,Joypurhat",
+  ],
+  Khulna: [
+    "খুলনা বিভাগ",
+    "Khulna,Bagerhat,Satkhira,Jessore,Jhenaidah,Magura,Narail,Kushtia,Chuadanga,Meherpur",
+  ],
+  Barishal: ["বরিশাল বিভাগ", "Barishal,Bhola,Patuakhali,Pirojpur,Jhalokathi,Barguna"],
+  Sylhet: ["সিলেট বিভাগ", "Sylhet,Moulvibazar,Habiganj,Sunamganj"],
+  Rangpur: [
+    "রংপুর বিভাগ",
+    "Rangpur,Dinajpur,Gaibandha,Kurigram,Lalmonirhat,Nilphamari,Panchagarh,Thakurgaon",
+  ],
+  Mymensingh: ["ময়মনসিংহ বিভাগ", "Mymensingh,Jamalpur,Netrokona,Sherpur"],
+};
+const DISTRICTS = Object.fromEntries(
+  Object.entries(DIV).map(([k, v]) => [k, v[1].split(",")]),
+);
+
+/* ==========================================================
+   REAL BANGLADESH MAP  (SVG outlines of 8 divisions - do not edit)
+   ========================================================== */
+const MAPREAL = {
+  "H": 423.7,
+  "divs": {
+    "Khulna": {
+      "c": [88.1, 262.2],
+      "d": "M146.5,165.2L148.8,163.7L151,163.6L151.3,164.9L152.2,164.3L153.7,164.8L156.3,160.8L161.9,163.4L161.4,164.5L163,165.5L\
+161.6,167.7L163.1,169.3L162.6,172L163.4,173.5L162.6,175.3L161.1,175.8L161.4,178.3L159.8,179.5L159.2,183.7L157.4,183.4L\
+156.5,182.3L156.4,180.7L154.8,180L155,178.2L156.1,178.6L157.4,177.2L157.1,172.8L155,172L153.4,174L150.3,173.3L146.5,165.2Z\
+M149.1,202.1L149.9,200.9L149.7,198.9L151.5,198L153.1,202.2L152.7,203.4L151.3,204.1L149.1,202.1Z\
+M35.1,199.8L36.5,199.7L37.5,198.7L37,197.7L38.1,197.6L36.4,194.3L39.4,193.3L41.2,194.6L41.3,196L42.8,194.8L44,194.9L\
+44.7,197.7L44,199.3L44.9,201.3L48.5,203.1L49.8,202.9L50.3,200.7L52,200.5L52.9,197.7L56.1,194L56.7,191.5L60.3,190.7L\
+61.3,189.7L60.4,187.5L61.9,185.8L61.3,184.1L58.7,183.2L58.7,181.9L57.8,181.3L58.8,179.6L58.5,176.2L59.8,175.4L64.5,176.8L\
+67.7,185.6L69.8,186.6L70,187.5L74.5,188.1L75.1,185.6L77.6,185.5L77.7,186.6L78.9,186.6L80.5,193.1L81.6,191.3L83.7,193.4L\
+86,192.4L86.8,192.9L84.9,200.2L83.8,200.5L84.4,201.1L83.1,202.9L83.7,204.4L86.2,207.8L87.7,208.2L90.1,207L91.8,208.5L\
+92,209.9L94.5,210.8L94,212.9L95.6,214.2L95.8,215.7L98.2,217.2L95.8,218.4L95.4,221.4L96.2,221.2L96.5,219L97.5,218.8L\
+102.5,221.5L103.3,227.7L102.3,228.2L102.4,231L103.6,233.1L105.1,233.9L104.7,234.4L106.6,235.3L104.6,236.4L104.4,238.2L\
+106.4,237.6L107.8,239.1L107.3,241.9L108.1,243.4L110.8,241.7L112.8,242.1L110.7,243L111.2,245.7L108.9,246.8L107.3,245.5L\
+107.1,246.7L111,249.8L110.5,250.9L111.6,251.4L112.5,254.2L114.8,255.1L115.2,258.9L119.3,261.7L118.4,262.6L122.7,263.2L\
+122.9,264.3L124.3,264.9L124.3,267L122.4,268.7L123.9,269.9L121.8,270.8L122.3,272.2L123.5,272.2L123.5,274.2L121.7,274.1L\
+119,276L123.8,277.3L122.4,278.7L121.3,277.7L120.9,278.4L123.2,279.9L122.9,282.4L125.4,283.3L124.9,286.1L123.1,289.1L\
+125.9,289.8L125.2,290.4L121.1,289.4L120.3,290L121.1,291.6L123.4,291.4L124.3,292.2L123.6,293.5L121.6,293.8L119.6,295.5L\
+121.6,298.9L118.7,306.6L120.9,314.4L120.3,317.6L117.9,320.5L115.1,320L118.4,322.3L119.9,331.2L119.2,333.2L117.4,333.5L\
+117.3,335.4L113.7,336.6L113.3,335.4L111.4,334.3L111.2,336.3L109.8,336.7L107.6,335.8L106.9,336.4L105.9,332.9L107.5,330.7L\
+105.9,331.8L105.2,331.2L104.8,331.9L106,334.5L105.3,334.8L104,333.6L103.8,334.5L108.2,339.1L108.5,340.9L106,342.3L\
+102.8,341.4L103.1,338.9L99.4,335.3L98.7,333.3L98.4,327.9L102.5,316L99.2,310.2L101.8,309L101.8,305.6L104.5,300.4L\
+103.6,299.5L103.8,300.8L101,305.4L101.3,307.9L98.4,310.6L101.2,316.2L97.8,325.3L96.4,323.8L98,319.1L96.8,317.7L\
+94.2,308.7L95.1,305.3L91.5,299.9L92.5,296.9L91.4,296L91.8,297.9L90.8,300.6L94.4,305.8L93.1,307.5L94,313.2L93.1,316.5L\
+94.5,317.9L93.9,315.4L94.7,314.8L97.1,319.8L95.5,322.8L94,322L96.4,328.7L96,331.1L93.4,331.5L94,332L93.7,334.9L\
+92.6,335.6L94,339.7L89.7,344.4L86.8,342.3L86,338.6L88.4,331.7L86.5,324.6L86.4,322.7L87.1,321.6L85.7,322.7L85.9,326.9L\
+82.3,320.6L83.4,319.7L83.3,318.3L80.5,318.6L82.3,314.4L84.5,311.9L84.1,310.2L79.6,318.1L80.4,319.3L82.6,319L81.5,321.2L\
+86.7,330.9L86.8,331.9L84.1,333.9L87.1,333.6L85.2,339.7L83.4,335.9L82.8,337.7L81.7,336.5L81.5,333.7L82.5,331.2L80.4,330.8L\
+77.1,328.3L79.2,327L79.7,325.7L77.2,327.2L76.6,328.5L80,331.3L82,331.6L80.9,333.1L80.6,336.5L82.1,340.2L82.2,343.8L\
+81.2,346L82.4,346.7L82.2,347.5L80.3,348.9L77,349L78.3,345.1L77.9,342.5L75.5,337.8L77.2,330.6L72.5,329.3L73,330.8L\
+76.6,331.1L75.5,336.4L73.6,339.3L70,338L70,333.6L68.8,331.7L69.7,328.4L69.5,323.8L67.2,320.4L66.7,318.1L70.2,314.1L\
+68.3,314.1L68.5,311.3L66.3,309.2L65.9,306.9L64.7,307.2L64.9,306.1L63.4,304.9L65.1,304L64.4,302.9L64.3,302.8L63.7,302.3L\
+62.7,302.1L63.1,297.6L62,296.3L63.7,294.8L63.1,293.7L63.5,292L62.4,290.9L61.2,286.4L59.7,285.6L59.7,283.5L61.1,281.7L\
+59.5,281.6L59.1,279.2L61.2,276.2L59,274.6L57.9,271.8L59.7,269.3L60.9,268.9L61.6,265.7L60.3,263.3L59,263.7L57.6,262.8L\
+56.9,260.9L57.7,260.4L56.4,259.5L56.7,258.2L54.6,258.8L55,254.9L53.7,254.1L55.5,254.4L56,252.8L54.7,249.4L55.2,247.7L\
+57.2,246.9L59.2,244.5L59.7,242.4L62.8,240.4L61.9,239.3L60.3,240.3L58.2,239.9L57.8,238.3L56.4,239L53.2,237.9L52.4,238.4L\
+51.8,237.2L51.6,239.3L50.2,239.5L49.2,239.1L48.8,237.6L45.6,236.9L45.9,235.7L44.2,233.6L45.1,232.9L46,233.6L46.4,232.4L\
+46.4,233.1L47.3,233.2L46.5,230.1L48.5,229.1L47.5,226.9L48.4,223.5L50.2,223.5L50.7,219.9L49,219.9L49.2,221.1L47.1,221.2L\
+46,218.9L44.3,218.6L43.3,216.8L41.8,216.3L40.6,212.3L36.7,212.5L37.5,210.1L35.5,210.1L35.3,209.3L36.3,207.3L35.7,204.8L\
+36.7,200.7L35.1,199.8Z\
+M97.8,337.4L98.9,335.5L102.4,338.9L102.3,340.6L101.3,341.5L102.6,344.7L100.5,345L99.3,344.2L98.1,340.9L98.9,339.4L\
+97.8,337.4Z\
+M65.8,330.9L67.5,330.6L67.6,333.1L69,335L68.6,338.2L72.9,342.2L72.4,344.4L70.5,344.4L66.5,339.9L67.6,335.2L65.8,330.9Z"
+    },
+    "Rajshahi": {
+      "c": [60.4, 149.2],
+      "d": "M0,137.8L3.5,134L3.8,130.7L6.2,129.9L6.7,127.6L7.4,126.9L8,127.8L7.9,126L9.9,124.9L9.6,121.8L8.5,120.6L8.3,119L\
+13.9,117.3L16.3,120.1L16.5,121.9L18.8,122.5L18.9,123.3L20,122.7L20.5,123.6L21.7,122.1L20.3,120.3L21.3,118.8L22.5,117.8L\
+24.9,118.5L24.8,116.7L28.3,111.9L27.4,111L28.4,109.2L27.8,105.6L29,104.5L27.4,100.5L27.8,99.8L27.9,100.6L29.2,100.9L\
+30,99.6L31.5,99.8L35.3,101L35.7,102.3L38.8,100.2L42.5,100.6L44.7,99.9L46.5,100.5L46.8,101.5L49.1,101.3L51,102.5L\
+53.6,99.5L55.6,100.8L55.8,102L57.9,101.9L58.6,102.8L60.3,101.4L59.6,99.8L61,99.8L60.9,96.6L62.8,95.3L64.9,95.8L\
+65.8,95.1L67.5,96.1L68.2,95.6L69.9,97.5L73.3,96.6L74.9,97.9L76.2,97.7L76.8,98.5L75.7,101.5L77.6,103L79.8,107.6L\
+80.8,108.1L81.7,108.3L83.1,106.2L85,105.9L85.4,107.5L86.8,108.3L86.8,109.7L88.4,110.7L90.2,108.7L91,109.5L92.7,109.2L\
+93.7,110.7L95,110.2L97,111.7L105.3,111.3L107.7,121.4L106.2,122.4L106.6,124L107.7,126.6L110.6,128.7L109.9,130.2L\
+113.8,131L114.5,133.1L113.3,134.3L115,137L114,137.8L114.1,140.8L112.8,141.2L114.3,144.5L113.1,145.3L113.1,146.8L\
+110.9,148.3L112.3,149.6L111.4,151.8L112.2,152.7L111.6,154.5L112.9,158.3L111.9,160L114.4,165.3L114,168.1L114.9,172.6L\
+113.9,173.1L116.4,174.9L116.6,178.7L114.1,182.2L110,183.7L108.2,185.6L107.7,189.8L108.3,190L108.5,192.8L110.7,196.2L\
+107.3,197.9L100.4,198.1L93.4,195.7L88.4,191.1L87.2,191L86.4,192.9L83.6,193.4L81.5,191.3L80.7,193.2L78.8,186.5L77.6,186.7L\
+77.4,185.5L75.3,185.6L74.6,188.1L70,187.5L67.7,185.6L64.5,176.8L59.8,175.5L58.7,176.3L58.8,179.6L57.9,181.3L58.7,183.1L\
+61.4,183.9L61.9,185.9L60.5,187.4L61.1,190.2L56.8,191.7L54.6,196.4L52.9,197.7L52,200.7L50.1,200.9L49.8,203L44.6,201.5L\
+44,195.1L43,194.9L42.7,195.8L41.4,196L40.7,193.9L42,193.7L44.8,190.5L46.5,190.6L46.7,186.3L48.7,185.7L48.1,184.2L\
+46.2,184.9L47,182.4L45.9,179.9L46.2,177.7L44.4,178.1L44,176.9L47.3,174.3L46.4,172.6L47,166.9L46,163.8L44,162.5L\
+39.8,163.3L36,161.8L35.1,164.1L33.3,160.6L32.1,160.7L28.1,158.1L24.5,158.6L20.5,157.7L17.1,153.9L12.2,152.2L8.5,148.8L\
+2.1,139.6L0,137.8Z"
+    },
+    "Rangpur": {
+      "c": [61.6, 56.0],
+      "d": "M5,50.3L7.2,48.1L6.8,47L7.8,44.6L8.7,44.4L8.4,43.5L11.1,42.7L10.3,41.2L11.1,39.4L9.6,38.7L10.8,34L15,31.1L17.1,31.2L\
+21.8,28.8L21.9,24.7L23.3,23L26.1,22.2L25.4,21.3L27.4,20.8L28.8,18L29,19L30.4,19.9L31.9,18.9L32.7,19.5L32.5,17.4L\
+30.3,12.1L26.4,11.7L25.3,10.6L23.3,10.2L22.2,13.1L20.7,10.4L22.5,7.2L23.6,2.7L26.1,0L26.5,4.4L27.5,6.2L28.3,6.8L\
+28.9,6L30.5,6.5L30.9,8.4L32.9,8.6L33.5,10.6L35.2,10.4L35.7,12.3L37.4,12.8L37.6,11.4L39.4,11.4L39.8,13.8L42.4,15.8L\
+43.5,15.5L43.7,17.1L44.5,17.2L43.5,18L44.3,20.4L47.3,20L47.4,21.8L45.6,22.5L43.1,21.9L43.4,23.7L45.5,24.6L47.4,22.6L\
+48.5,23.4L50.4,22.7L52,23.8L51.7,26.3L53.5,28.1L55.5,27.9L54.8,25.3L55.7,24.3L58.9,24.5L61.4,27.7L63.6,27.2L64.2,25.7L\
+64.2,27.2L66.6,27.4L67.6,26.3L67.2,24.1L66.6,25.1L62.9,23.3L62.1,24.9L60.7,25.1L58.9,23.8L58.6,20.9L59.7,20.9L59.6,22.2L\
+60.4,22.1L61.8,23.7L63.7,21.4L61.9,19.8L60.8,21.3L60.2,19.8L57.9,18.6L58.4,16.4L57.5,15.8L59,15.8L58.9,14.1L60.1,14.3L\
+60.8,12.1L62.6,13.1L62.8,14.9L64,14.8L65.9,16.4L67.3,15.8L69.3,16.5L69.9,21.3L72.4,21.9L72.3,23.7L70.9,25.1L71.5,26.7L\
+72.9,27.4L72.4,25.4L74.8,26.4L74.1,27.9L72.7,27.8L73.2,29.7L72.4,31.7L73.8,33L73.6,34.5L78.4,35.7L80.8,37.9L80.1,39.9L\
+81.7,39.8L81.8,41L83,40.9L86.6,43.8L88.7,43.7L89.8,41.6L90.9,41.1L91.5,43.7L93.4,44.5L96.3,44.3L96.4,42.7L97.1,42.6L\
+96.9,43.7L98.9,44.4L98.1,45.2L98.4,46.5L99.3,46.8L100,45.8L101.2,45.9L100.8,42.6L102.9,40.8L102.9,39.3L103.3,38.8L\
+103.5,40.5L105.2,39.7L104.1,36.9L102.7,38.2L102,37.5L102.1,36.5L103.2,36.9L104.1,35.8L102.5,36.2L101.6,33.4L102.7,33.2L\
+102.9,32.3L101.1,31.5L101.8,30.2L103,30.9L102.9,30L103.7,30.5L103.4,31.4L102.6,31.2L102.9,31.9L103.9,31.8L104.1,30.7L\
+105,31.3L104.4,28.3L106.6,28.9L107.2,27.7L107.9,28.9L107.3,29.4L108.1,29.4L107,30.2L108.1,32L108.8,31.6L107.7,32.9L\
+108.8,33.7L109.5,32.6L110.1,33.4L111.6,33.3L112.9,35.2L112.3,36.7L114,37L114,38.2L114.7,38.3L115,40.2L114.1,41.4L\
+115.8,41.6L116.3,45.2L117.2,45.4L117.3,43.5L119.7,46.1L117.8,46.5L117.8,48.4L120.6,48.2L117.2,53.4L117.3,55.6L116.2,57.3L\
+117.7,61.3L116.8,63.2L118.3,64.6L118.1,65.8L119.6,68.1L120.3,71.2L119.3,76.2L118.4,76.9L118.4,81.8L116.7,85.4L113.4,84.4L\
+113.8,87.3L110.3,89.4L112.2,94.8L111.8,98L108.7,98.3L105.6,104.4L104.7,108.2L105.8,111L104.8,111.8L102.8,111L97.1,111.7L\
+95,110.2L92.7,110.6L92.6,109.3L91,110L90.2,108.9L88.8,109.9L88.6,111.2L86.8,109.9L86.3,108L84.9,107.5L85,106L82.8,106.5L\
+81.6,108.4L79.8,107.7L78.6,104.5L77.6,104.4L77.8,103.5L75.5,101.6L76.6,98.7L76.1,97.8L74.9,98.1L73.1,96.6L69.9,97.7L\
+68.3,95.8L64.2,95.8L64.1,93.7L59.1,93.2L57.4,90.9L56.2,91.7L53.4,89L53.2,86.5L51.6,85.8L52.7,85.2L52.5,83.3L53.3,82.4L\
+52.8,80.3L51.7,80.3L51.3,77.9L49.7,78.4L48.4,77.8L48.6,79.8L45.5,79.5L44.4,81.5L41,81L40.7,79.6L38.2,78.6L34.1,78.9L\
+33.6,76.7L31.6,75.9L31.4,73.7L28,72.7L28.5,68L25.2,67.4L25.3,66.5L23.3,65.7L23.2,64.3L20.1,62.8L19.6,61.7L16.7,59.8L\
+16.7,57.8L14.7,57.8L12.9,59.3L11.3,58.4L9.2,60.1L8.6,58.8L6.8,58.6L7,57.6L5.9,56.4L6.7,54.6L5.5,53.2L6,52.2L5,50.3Z"
+    },
+    "Barishal": {
+      "c": [145.0, 294.5],
+      "d": "M190.4,321.3L190.7,319.2L192.6,317.8L192.5,316.5L195.6,311.6L196.6,307.1L196.5,301L195.7,300.5L194.2,301.3L193.4,300.2L\
+193.7,299.4L192.3,298.9L191.3,293.1L192.2,292.4L195,294.4L193.9,298.8L195.4,297.9L195.7,300.4L196.9,299.3L196.6,296.4L\
+201.3,298.9L203.3,298L204.2,300.8L204.4,307.6L202.7,313.1L200.8,315.7L199.5,316L197.1,318.5L195.8,319.4L194.9,318.9L\
+194.2,322.2L191.5,323.3L190.4,321.3Z\
+M193.2,284.3L202.3,283.8L202.4,292.8L200.7,293.9L198.7,292.8L193.2,284.3Z\
+M195.2,321.1L196.5,320.5L197.5,320.6L196,322.7L195.2,321.1Z\
+M184.1,317.8L185.8,316.1L189.4,307.2L190.2,300.9L191.3,300.7L191.7,302.3L192.6,302.4L192.7,301.3L194.3,302.2L193.1,307.9L\
+193.3,305L192.3,304.6L190.6,312.9L186.9,319.7L185.4,319.4L185.1,321.4L184.4,321.1L184.4,319.1L185.4,317.6L184.1,317.8Z\
+M187.8,294.5L188.6,292.5L190.6,292.1L189.9,295.2L190.9,295.7L191.6,299.3L189.2,298.6L189.5,295.6L187.8,294.5Z\
+M181.8,285.2L183.1,284.3L185.3,285.6L187.7,290L190.6,288.3L190.9,289.4L187.9,290.3L186.3,289.6L183.5,290.3L183.1,288L\
+182.6,287.3L182.2,287.9L182.5,286L181.8,285.2Z\
+M185.3,307.6L186.4,303.6L187.7,300.6L188.2,303.3L186.5,305.1L185.6,310.4L185.3,307.6Z\
+M186.9,308.4L187.7,305L188.1,304.8L187.7,307.6L186.9,308.4Z\
+M183.8,301.5L183.4,299.8L184.8,297.2L185.5,300L183.8,301.5Z\
+M177.8,330.6L178,329.5L181.8,324.1L182.3,325.1L181.4,325.3L180.4,328.8L177.8,330.6Z\
+M181.3,327.9L182.9,325.6L183.7,326.7L182.7,330.5L181.3,327.9Z\
+M119,276.1L121.6,274.1L123.5,274.1L123.5,272.2L122.3,272.2L121.7,270.8L123.8,269.9L122.4,268.9L124.3,266.9L124,264.3L\
+125.6,265.1L129,263.9L130.1,259.4L131.6,259.4L131.6,256.8L132.4,256.9L134,254.3L136,254.3L136.7,251.1L138.5,250.1L\
+140.5,250.9L141.6,249.9L143.1,251.6L142.6,255.9L143.2,257.1L148.4,256.1L149,254.3L148.2,251.1L149.1,250.7L152.5,250.9L\
+155,252L154.1,254.2L157.3,254.5L158.5,256.6L158.4,254.3L161,252.6L165.6,258.7L165.9,259.7L165,261.1L166.2,261.1L\
+166.8,262.6L166,263.4L167.8,263.9L171.2,267.3L170.9,269.2L166.8,268.2L170,270.1L173.3,279.7L176.6,283.2L177.6,288.7L\
+183.4,295.2L181.6,300.8L181.9,306.5L180.2,315.1L178,319.5L173.7,324.9L174.3,322.7L171.8,325L168,325.2L166.7,326.6L\
+164.9,333.1L162.7,333.2L163.7,334.8L161.4,337.1L159.8,338.2L158.6,338L158.7,338.9L157.5,338.5L161.4,333L160.9,332.5L\
+157.3,336.2L155.5,336.5L157.7,334.9L163.1,326.8L162.9,326L164.3,325.8L163.5,325.1L166.2,322.7L167.8,317L167.8,313.5L\
+167.2,313.3L170.7,307.1L171.2,301.1L170.6,300.9L170.3,302.7L169.3,303.1L169.7,304.8L167.3,306.7L168,303.4L167.1,303.2L\
+165.8,306.6L162.1,310.1L157.7,317.3L149.7,325.6L150,321.5L150.7,321.6L153,318.9L153.1,316L152.4,315.7L152.1,319.1L\
+149.2,321.7L144.5,335.9L142.9,337.7L139.6,339.2L134.3,337.3L133.4,336.2L133.4,334.4L130.8,334.4L129.4,333.1L129.7,328.8L\
+132.5,327.1L133.7,322L138.1,316.9L140.4,317.4L142.3,315L141.4,314.5L140.9,316.2L137.7,316.4L133.1,321.2L131.5,326.4L\
+129,326.1L127.6,324.8L127,322.5L129.7,321.2L130.1,315.9L132.4,313.7L131.2,312.1L129.6,312.4L131.7,313.7L129.2,315.5L\
+128.7,317.2L129.3,319.3L126.2,322.5L127,328L125.1,328.7L123.9,327.8L123.8,325.1L121.5,319.9L121.9,313.9L120.6,312.5L\
+118.7,306.6L121.6,299L119.6,295.5L121.6,293.8L123.6,293.5L124.3,292.3L123.4,291.4L121.1,291.6L120.3,290L121.1,289.4L\
+125.7,290.3L125.6,289.4L123,289.1L124.9,286.1L125.4,283.4L122.8,282.4L123.1,279.9L120.8,278.4L121.2,277.6L122.4,278.6L\
+123.7,277L119,276.1Z\
+M173.4,325.1L171.5,329.8L169.5,332.2L167.3,332.6L166.7,331.8L167.1,327.3L167.4,331.3L168.5,326.7L171.6,326.6L171.4,325.8L\
+173.4,325.1Z\
+M177.2,335L178.6,331.5L179.7,330.2L180.6,330L179.8,330.8L181.3,332L181.1,333.1L179.9,334.5L177.2,335Z\
+M176.3,325.6L177.4,325.1L177.7,323.5L178.5,323.2L178.3,324.7L176.8,325.9L176.3,325.6Z\
+M173.6,334.2L175,330.2L176.4,329.7L176.8,331.2L175.5,334.3L174.7,334.9L173.6,334.2Z\
+M172.5,274.1L173.2,272.2L174.6,273.8L174.2,277.3L172.5,274.1Z\
+M169.5,259L170.7,258.8L171.9,261.2L170.5,260.6L169.9,261.4L169.5,259Z\
+M147.6,333.1L150.7,326.4L156.9,321.4L156.4,320.6L157.3,320.2L157.4,321.1L158.4,321L165.1,312L164.2,311.2L165,308.5L\
+168.4,307.9L168.2,310.7L166.4,311.7L166.9,317.3L165.8,320.7L157.4,330.8L156.9,332.6L153.6,333.2L153,334.4L152.7,334.6L\
+152.1,333.7L151.5,334.8L152.4,335.4L152.1,336.5L151.4,335.1L148.5,335.5L147.6,333.1Z\
+M162.7,252.8L163.1,250.6L166.5,254.1L165.6,255.3L165.1,254.7L164.3,255.2L162.7,252.8Z"
+    },
+    "Sylhet": {
+      "c": [238.4, 143.1],
+      "d": "M187.5,109.1L190.4,109.4L190.1,107.9L188.7,106.6L189.8,102.5L196.6,100.6L207.5,100.7L209.3,100L210.9,101.6L217.7,103L\
+218.7,102.5L220.4,104L222.2,103.9L222.5,105.2L227.7,104.1L229.1,102.5L231.2,102.1L230.7,104.3L232,104.5L232.2,105.6L\
+233.1,105.9L236.5,104.9L237.3,103.3L239.7,104.3L240.6,102.1L241.8,103.1L245.2,102.1L255.1,102.5L256.5,101.5L260.3,101.4L\
+264.8,103.3L265.1,104.5L268,106L268.6,105.1L270.4,106.4L269.3,106.2L269.1,107L270.8,107.8L275.8,109.6L278.6,109.3L\
+278.5,111.1L283.6,112.5L283.3,116.8L286,116.7L286.2,117.5L285.1,118.7L287.6,118.3L288.2,121.4L287.6,123.6L284.9,123.4L\
+284.3,124.6L282.5,124.4L282,125.1L278.8,122.5L278.1,123.1L275.6,120.5L271.5,121.3L272.2,122.6L271.4,124.2L271.8,125.5L\
+273.8,126.6L274.9,129.6L274.3,132.3L275.3,133L272.2,138.7L271.2,147.4L270,149.3L266.6,147.7L266,149.9L267.2,154.7L\
+266.8,155.3L265.2,155.1L264.1,157.9L262.1,158.6L256.1,157.3L254.6,158.2L256,162.1L254.8,161.7L253.6,159.7L251.3,161.2L\
+252.5,165.9L250.3,174.9L248.9,174.9L248.1,172.5L246.6,171.7L246.3,169.3L244.5,169.9L240.3,167.6L240.9,174.7L238.9,174.6L\
+236,173L234.5,168.6L233.8,169.6L234.5,171.4L232.9,174.9L233.1,177.4L230.4,178L229.7,179.6L227.1,179.5L222.6,177.7L\
+216.3,177.2L217.6,181.2L216.1,186.4L211.1,184.8L212.1,182L211.4,180.7L210.3,180.4L210.7,178.2L209.3,178.1L209.5,176.8L\
+210.3,176.6L208.9,174.7L209.9,171.9L212.3,171.1L209.9,170.4L210.5,169.2L211.1,169.6L212.8,168.4L212.9,166.4L211.5,166L\
+210.3,167.5L210.5,169L209.2,169L204.6,167.9L203.2,166.1L204.5,164.2L202.3,164.9L203.4,162.2L207.2,162.4L205.7,159.4L\
+208.4,158L207.3,156.2L205.8,156.5L206,154.3L207.5,154.4L206.6,150.9L204.7,152L204,150.8L201.7,151.1L205.7,148L207,144.9L\
+205.3,144.2L204.9,142L203.5,141.2L203.5,140.5L205.2,140.2L205.6,138.9L206.9,138.7L206.5,137.3L207.6,137L206.2,135.4L\
+206.8,133.9L205.4,135L203.6,133.9L201.2,133.9L201.7,132L200.8,131.6L203,129.8L202.4,129.1L203.1,126.8L201.4,126.5L\
+201.9,127.9L200.5,129.1L199.3,127.4L200.1,125.5L197.1,121.6L194.9,121.1L194,122.7L193,121.8L192,122.1L191.6,120.6L\
+189.1,120.2L188.8,118.8L190.4,117.5L188.5,116.2L187.9,112.8L189.2,111.9L187.8,111.4L187.5,109.1Z\
+M200.8,269.4L201.9,266.3L201.6,264.9L202.8,264.7L202.8,262.9L207.3,263.2L214,260.9L214.8,262L213.8,264.2L214.7,264.2L\
+214.7,265.2L212.3,265.7L213.8,267.4L212.1,267.8L213.7,270L215.7,268.7L216.5,270.3L215.3,270.8L216.8,271.9L211.3,272.7L\
+208.7,276L206.6,274.9L209.5,277.8L210.2,279.8L209.2,279.7L206.1,278.5L203.2,275.4L204.4,272L200.8,269.4Z\
+M210.5,275.9L211.9,274L213.8,273.6L214.5,274.7L212.5,279.4L210.5,275.9Z"
+    },
+    "Chattogram": {
+      "c": [264.1, 289.4],
+      "d": "M162.5,228.2L165,223.1L164.9,220L167.3,220.4L169.1,219.5L171.7,220.5L173.5,219.2L172,215.7L169.4,214.4L169.4,213.5L\
+170.7,213.2L169.9,211.5L168.3,211.3L169,207.5L171.3,207.1L173.3,208.3L175,207.9L175.5,205.9L174.3,202.5L177.1,198.4L\
+177,194.3L181.3,194.3L183,193.2L186.2,193.9L188.9,189.8L189.1,187.9L190.3,186.8L189.9,184.3L190.5,183.2L195.5,178.8L\
+194.9,177L191.2,173.7L194.8,169.7L197.9,169.7L197.2,168.7L197.6,167.8L200.7,167.6L203.2,166.1L204.7,167.8L209,168.9L\
+210.1,168.8L211.5,166L212.7,166.1L213.2,167.2L212.9,168.6L210,170.5L212.2,170.4L212.2,171.9L211.7,171.3L210,172L\
+209.2,174.4L209.6,176L210.9,176.5L209.5,176.9L209.4,177.9L210.9,178.1L210.3,179.8L211.6,180.7L212.2,182.7L211.1,184.4L\
+211.3,186.6L210.1,186.3L209.1,188.4L209.8,190.1L207.8,189.8L207.8,191.2L206.8,191.9L208.4,196.1L206.7,199.2L206.6,202.1L\
+206.2,203.2L205.5,202.2L202.8,202.3L201.7,204.8L202.1,206.5L205.5,206.7L204.9,209.5L202.4,208.4L202.5,213L203.5,213.2L\
+204.7,216.3L205.8,216.2L205.1,218.4L208.1,220.4L210.1,228.2L210.9,228.3L210.5,229.2L211.1,230.2L212.6,229.5L210.7,232.4L\
+212.2,233.3L211.4,234.4L212.4,235L212.1,235.6L213.1,237.1L212.9,243.6L214.4,247.7L215.9,249.9L217.5,250.8L218.5,250.5L\
+218.8,249.2L217.8,248L216.5,241.9L216.9,238.8L217.8,238.5L217.3,237.6L218,237.3L217.6,236.2L218.5,236.5L218.4,234.8L\
+219,236.4L221.3,236.5L222.3,238.8L221.3,239.5L222.6,239.3L222.9,241.4L224.7,241.9L223.8,242.3L223.7,243.8L224.7,244L\
+224.5,244.9L225.2,244.6L224.6,245.7L226.1,248.4L226.3,251.9L227.4,252.1L227,254.9L229.1,257.1L231,256.8L231.8,258.9L\
+233.5,255.9L235.1,256.4L238.4,255.7L241.4,251.9L242.3,252.1L241.8,249.9L243.7,250.3L245.4,248.3L244.3,247.8L243.7,242.1L\
+242,236L241,235.4L241.1,233.6L245,230.1L246.4,226.4L249.9,223.9L252.4,224.3L252.2,222.1L254.4,221.1L252.1,206.8L\
+253.2,206L253.5,203.3L254.9,203.4L256.3,207.6L259.2,209.4L261.2,209.3L261.7,207.1L262.9,207.1L265.6,203.4L266.7,202.9L\
+267.8,205.1L269.6,205.7L270.1,209L271.2,207.9L271.8,204.3L273.4,204L274.9,205.6L273.9,209.6L275.3,211.2L274.8,212.7L\
+276.1,214.3L276,217.2L276.7,217.9L277.6,224.2L279.3,226L279.3,228.9L280.7,229.4L280,232.1L281.1,233.3L280.8,234.7L\
+282.3,237.9L278.9,238.5L279.3,245.3L279.9,245.9L279.4,247.6L281.5,250.8L280.3,259L283.2,260.5L284.2,262.6L285.2,262.2L\
+287,272.4L289.2,273.5L290.3,278.2L290.9,283.6L290,285.6L291.7,288.9L291.8,295.9L293.6,302.4L294.1,309.7L295.5,315.2L\
+295.2,316.3L293.7,314.9L292.5,316L295,320.6L294.4,322.5L297.1,333.7L295.7,335.4L296.2,337.2L295.4,338.7L295.4,354L\
+298.1,369.9L300,375L294.7,378L292.3,368.4L289.2,368.6L288.4,369.8L284.5,369.5L283.8,365.4L280.7,361.5L278.4,362.4L\
+277.4,365.7L273.7,365.1L272.9,369.7L269.9,371.2L269.1,372.6L270.3,378.8L267.4,383.1L267.7,383.9L269.1,383.8L269.2,386.4L\
+270.7,386.7L272.9,389.6L273.3,390.7L272.5,393.3L273.4,395.9L273.5,400.1L275.7,403.2L278.9,413.2L276.2,411.3L270.7,401.1L\
+268.2,394.3L259.3,382.1L259.4,375L258.5,372L253,362.8L255.1,361.7L256.4,358.9L255.8,355.1L256.7,352.9L255.3,353.5L\
+254.6,359.8L252.6,359.8L250.9,362.1L249.4,361.4L247.5,359.6L245.9,357.6L248.7,356.9L247.3,355.3L248.2,353.7L246.7,354.3L\
+246.5,352.3L249.3,350.2L247.1,348.1L247.1,346.9L250.5,337.8L250.7,332.7L248,324.7L248.5,321.7L247.5,316.9L247.1,316.2L\
+246.5,316.9L245.5,315.5L244.4,308.7L243.5,309.1L241.3,305.8L239.4,294.9L237.6,290.7L229.7,281.8L227.9,278.6L222.9,274.8L\
+219.7,268.9L219,269.6L219.7,270.3L219.3,271.8L216.5,270.3L215.9,268.9L214.2,269.6L212.2,268.2L213.1,267.1L212.1,265.6L\
+213.8,265.5L213.2,263.1L214.1,262.8L214,261.2L210.1,262L209.2,263.1L206.6,262.7L204.8,263.6L202.8,262.9L202.9,264.9L\
+201.8,264.9L202.1,266.8L201.3,267.3L201,269.4L204.6,272.4L203.2,275.5L206.1,278.5L210.2,279.8L210.6,281.6L206.9,288L\
+204.6,288.3L204.6,289.9L202.7,291.3L202.2,283.9L194.1,284.2L193.2,285.1L185.1,278.6L182.4,277.9L178,270.2L178.1,266.9L\
+177.2,268.1L175,263.3L174.2,263.7L169.4,255.9L168.8,238.8L170.3,237.6L170.5,234.8L169.6,233.1L169.1,233.6L167.8,232.1L\
+167.7,230.6L165.8,231.2L162.5,228.2Z\
+M276.5,421.2L277.3,420.6L277.6,423.7L277.2,423.5L276.5,421.2Z\
+M245.4,344.4L246.8,337L246.1,334.9L246.4,332L248.2,330.3L249.4,332.2L249.5,334.7L246.4,344.3L245.4,344.4Z\
+M219.1,288.2L219.1,283.1L221.5,282.2L228.5,292.1L228.6,296.2L225.9,297.7L223,296.9L219.1,288.2Z\
+M212.5,279.4L214.1,276.8L214.5,274.8L213.8,273.6L216.4,274.9L218.4,277.2L217.1,280.9L212.5,279.4Z\
+M214.8,298.7L217.4,295.2L218,295.5L218.1,298.1L214.8,298.7Z\
+M209.2,288.5L209.7,286L212.1,282.7L214.7,282.2L214.8,288L210.8,291L209.2,288.5Z\
+M185.3,285.6L189,286.6L190.6,288.3L187.7,290.1L185.3,285.6Z\
+M164.6,233.9L166.6,234.2L167.2,233.4L168.8,237L164.6,233.9Z\
+M163.1,250.6L164.7,248.6L164.7,247L166.6,247.2L167.7,249.4L167.2,253.6L166.8,253.2L166.5,254.1L163.1,250.6Z"
+    },
+    "Dhaka": {
+      "c": [143.2, 196.8],
+      "d": "M82.8,203.2L84.3,201.4L83.6,200.4L84.8,200.1L87.1,190.9L88.7,191.3L93.4,195.7L96.7,197.4L106.4,198.1L110.6,196.3L\
+109,193.7L108.4,194L108.6,191.4L107.6,188.9L108.2,185.6L110,183.7L114,182.3L116.6,178.7L116.3,174.9L113.8,173L114.9,172.4L\
+113.9,168.1L114.4,165.3L111.9,160L112.8,158.2L111.3,151.6L112.3,149.6L110.8,148.3L111.7,148L111.6,147L113,146.7L\
+113.3,145.1L115.6,144.8L117.6,141.5L117.8,139.4L119.4,139.2L120.1,137.1L121.1,137.2L120.2,132.7L122.1,133L122.8,131.6L\
+123.8,131.6L126.7,133.8L129.2,131.7L129.4,130.5L132.7,129.4L134.2,131.6L133.7,132.9L136.4,133.2L136,134.4L137.4,140.2L\
+136,142.9L137.6,144.4L137.6,146L139,148.1L143.5,150.9L141.4,152.6L142.6,155.2L143.9,155.6L142.6,160.4L143.8,161.3L\
+144.6,164.2L147.2,165.8L147.1,167.2L150.3,173.3L153.3,174L154.5,172.2L157,172.8L157.9,175.4L157,176.3L157.5,177.4L\
+156.7,177.5L156.7,178.4L155,178.5L154.8,179.9L156.5,180.5L156.8,182.5L158.7,183.8L159.9,182.3L159.8,179.4L161.1,178.4L\
+161.1,175.6L162.6,175.3L163.4,173.5L162.6,172L163.1,169.3L161.7,167.9L161.9,166.8L162.8,166L164.9,167.4L167.8,165.8L\
+169.6,166.3L169,163.2L167.6,160.9L169.3,155.5L168.6,154.2L165.1,152.5L165.3,150.1L166.7,149.7L171.4,151.9L171.7,149.5L\
+173,148.4L174.3,151.4L175.6,148.9L178.8,148.9L180.5,143.4L181.7,143.9L182.9,142.6L186.3,142.8L187.5,141.5L188.2,142.4L\
+189.7,141.8L190.5,142.6L193.3,142.3L194.1,140.5L194.6,141.8L196.8,141.3L198.3,142.4L200.4,141.8L200.4,139.6L204.4,139.9L\
+204.6,140.7L203.6,141.4L204.9,141.9L205.4,144.1L207.1,144.8L205.8,148L202.2,150.5L204.6,151L204.4,152L206.2,150.7L\
+207,151.5L207.6,154.7L206.2,154.3L206.1,155.8L207.4,156.1L208.5,158.1L205.8,159.3L207.2,162.5L203.4,162.2L202.3,164.5L\
+204.7,164.1L204.5,165.1L200.7,167.6L197.5,167.8L197.9,169.9L194.8,169.8L191.6,173.2L191.2,174.1L194.9,177L195.5,178.8L\
+190.5,183.2L190.3,186.9L189.1,187.9L188.9,189.8L187,192.9L185.7,194.3L183,193.2L181.3,194.3L177,194.3L177.1,198.4L\
+174.3,202.6L175.5,205.9L175,208L173.3,208.3L171.3,207.1L168.9,207.6L168.4,211.2L169.8,211.3L170.7,213L169.4,214.4L\
+172,215.8L173.5,219.2L171.7,220.5L169.1,219.5L167.2,220.4L164.9,220.2L165,223.1L162.5,228.1L165.8,231.2L165,232L\
+161.6,231.9L160.3,232.5L160.2,233.5L162.9,234.9L166.9,239.8L164.6,244.1L159,250.3L159.8,252L157.4,253.5L157.3,254.5L\
+156.7,253.8L154.1,254.3L154.9,252L149.1,250.8L148.1,251.2L149,254.3L148.4,256.1L143.3,257.2L142.6,255.9L143.1,251.7L\
+141.6,250L140.8,251L138.5,250.1L136.6,251.9L136,254.4L134,254.4L133.3,256.1L131.6,257L131.5,259.6L130.1,259.6L128.7,264.1L\
+125,265.1L122.8,264.3L122.6,263.1L118.5,262.7L119.1,261.6L115.1,258.9L114.7,255L112.6,254.2L111.6,251.4L110.5,251L\
+110.8,249.6L106.9,246.2L107.8,245.5L109,246.8L111.1,245.7L110.7,243L112.7,242.2L110.8,241.7L108,243.4L107.3,242L\
+107.8,239L106.7,237.7L104.3,238.2L104.6,236.5L106.4,235.1L103.6,234.1L102.4,231L102.2,228.2L103.3,227.6L102.5,221.5L\
+97.5,218.8L96.5,219.1L96.2,221.3L95.4,221.4L95.8,218.4L98.2,217.2L95.7,215.7L95.6,214.2L93.9,212.9L94.5,210.8L91.9,209.9L\
+91.8,208.5L90,207L87.8,208.2L86.1,207.7L82.8,203.2Z"
+    },
+    "Mymensingh": {
+      "c": [153.8, 125.8],
+      "d": "M104.7,108.2L105.5,104.5L108.7,98.3L111.8,97.9L112.2,94.8L110,89.5L113.7,87.4L114,85.7L112.9,84.2L116.7,85.4L116.4,89.3L\
+117.7,92.3L117.4,93.9L120,94.5L122,92.9L125.7,93.2L126.8,94.9L131.4,96.2L135.1,98.7L149.1,100.9L151.7,103.1L156.2,104.4L\
+160.6,102.2L168.4,102.4L170.5,100.7L170.6,102.6L171.9,102.3L172.6,103.3L173.5,102.7L174.8,103.3L178,101.5L179.7,102.9L\
+182.4,103.5L189.8,102.5L190.2,103.3L189,104.3L188.8,106.7L190.2,107.9L190.5,109.3L187.9,109L187.6,110.6L189.9,112L\
+187.9,113.2L188.7,114.2L188.6,116.2L190.4,117.5L189.2,118.8L189.2,120.3L191.6,120.6L192.2,122.1L193.1,121.7L193.9,122.4L\
+195,121L198.4,122.3L199.4,125.2L200.5,125.7L199.5,126.7L199.6,128.2L201.1,129L201.9,127.7L201.4,126.5L202,125.9L\
+203.1,126.7L202.5,128.9L203.1,130L201.4,131.4L202.3,132.2L201.9,133.7L205.2,134.7L206.6,133.7L206.5,135.6L207.6,137L\
+206.6,139.1L205.5,139L205.2,140.4L200.6,139.9L200.4,141.9L198.9,142.6L196.8,141.3L194.6,141.8L194.1,140.5L193.3,142.4L\
+188.2,142.5L187.4,141.6L186.1,143L182.9,142.7L180.1,144.7L178.8,149.1L175.7,149.1L174.2,151.6L173,148.5L171.8,149.5L\
+171.4,151.9L165.7,149.8L164.8,150.9L165.1,152.5L168.6,154.2L169.4,155.5L167.7,160.7L169.6,166.6L167.8,165.9L164.8,167.4L\
+161.3,164.5L161.7,163.4L156.3,160.8L153.7,164.9L151.2,165L150.8,163.7L148.8,163.7L146.5,165.2L144.7,164.2L142.6,160.3L\
+143.7,155.9L142.6,155.2L141.3,152.5L143.4,150.8L139.8,148L139.1,148.4L135.9,142.8L137.4,140.2L136.3,133.2L133.7,133L\
+133.8,130.8L132.8,129.5L129.5,130.5L129.2,131.7L126.7,133.8L123.6,131.6L121.9,133.2L120.3,133L120.2,134.9L121.4,136.9L\
+119.9,137.3L119.5,139.2L117.9,139.5L118.5,141.2L117.8,141.2L115.8,144.9L114.4,144.8L112.8,141.6L114,140.7L114,137.7L\
+114.9,137L113.3,133.9L114.4,133L113.6,132.6L113.3,130.5L111.4,130.5L110.9,131.3L109.6,130.2L110.4,128.7L107.4,126.1L\
+106.1,122.4L107.7,121.1L106.8,119.6L107.1,117L105.4,111.9L105.6,109.2L104.7,108.2Z"
+    }
+  }
+};
+/* ---- ৩. ডেমো ডেটা: এখানে নিজের জায়গা যোগ/বদল করো ---- */
+
+/* ╔═══════════════════════════════════════════╗
+   ║ JS-3: DEMO ডেটা — প্রতিটি {…} = একটি ভ্রমণ-স্মৃতি
+   ╚═══════════════════════════════════════════╝ 
+   id: ইউনিক নাম | division/district: ইংরেজি নাম হুবহু (JS-2 এর মতো) | date: YYYY-MM-DD
+   cover: "মূল ছবির সরাসরি লিংক" | gallery: ["ছবির লিংক ১", "ছবির লিংক ২", ...]
+   ছবির লিংক এখানে সরাসরি বসাও। */
+
+/* ==========================================================
+   DEMO DATA  (first-open data; copy one block to add a place)
+   ========================================================== */
+const DEMO = [
+  
+{
+  id: "p1",
+  division: "Chattogram",
+  district: "Cox's Bazar",
+  place: "Inani Beach",
+  date: "2026-10-08",
+  duration: "2 Days",
+  experience: "Excellent",
+  rating: 5,
+  featured: true,
+  location: "Cox's Bazar, Bangladesh",
+  cover: "Beach.png",
+  gallery: [
+    "https://picsum.photos/seed/inani0/800/600",
+    "https://picsum.photos/seed/inani1/800/600",
+    "https://picsum.photos/seed/inani2/800/600",
+    "https://picsum.photos/seed/inani3/800/600",
+    "https://picsum.photos/seed/inani4/800/600",
+    "https://picsum.photos/seed/inani5/800/600",
+  ],
+  description: "পাথুরে সৈকত আর নীল সমুদ্রের এক শান্ত বিকেল।",
+  story: "ইনানী বিচে এসে সমুদ্রের বিশালতা খুব কাছ থেকে অনুভব করেছি।\nপ্রবালপাথরের উপর ঢেউ ভাঙার শব্দ আর সূর্যাস্তের আলো — সব মিলিয়ে দিনটা মনে থাকবে অনেক দিন।",
+}, 
+
+{
+  id: "p2",
+  division: "Chattogram",
+  district: "Cox's Bazar",
+  place: "Himchari",
+  date: "2026-10-09",
+  duration: "1 Day",
+  experience: "Very Good",
+  rating: 4,
+  featured: false,
+  location: "Cox's Bazar, Bangladesh",
+  cover: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/e2/f8/43/longest-sea-beach-in.jpg?w=1100&h=600&s=1",
+  gallery: [
+    "https://picsum.photos/seed/himchari0/800/600",
+    "https://picsum.photos/seed/himchari1/800/600",
+    "https://picsum.photos/seed/himchari2/800/600",
+    "https://picsum.photos/seed/himchari3/800/600",
+  ],
+  description: "পাহাড়, ঝরনা আর সমুদ্রের মিলনস্থল।",
+  story: "হিমছড়ির পাহাড়ের উপর থেকে সমুদ্র দেখার অনুভূতি অসাধারণ ছিল।",
+}, 
+
+{
+  id: "p3",
+  division: "Chattogram",
+  district: "Chattogram",
+  place: "Sajek Valley",
+  date: "2026-10-10",
+  duration: "Half Day",
+  experience: "Excellent",
+  rating: 5,
+  featured: false,
+  location: "Cox's Bazar, Bangladesh",
+  cover: "https://tbbd-flight.s3.ap-southeast-1.amazonaws.com/blogzB8BGDn5J45LisskNSi5r3F07ohqWXZ4.png",
+  gallery: [
+    "https://picsum.photos/seed/marine0/800/600",
+    "https://picsum.photos/seed/marine1/800/600",
+    "https://picsum.photos/seed/marine2/800/600",
+    "https://picsum.photos/seed/marine3/800/600",
+  ],
+  description: "সমুদ্রের পাশ ঘেঁষে দীর্ঘ পথচলা।",
+  story: "সাজেক ভ্যালি বাংলাদেশের রাঙ্গামাটি জেলার বাঘাইছড়ি উপজেলায় অবস্থিত একটি পাহাড় পরিবেষ্টিত দুর্গম এলাকা। কালের বিবর্তনে এটি একটি বিচ্ছিন্ন ও সংঘাত-পরবর্তী অঞ্চল থেকে দেশের অন্যতম শীর্ষস্থানীয় এবং জনপ্রিয় পর্যটন কেন্দ্রে রূপান্তরিত হয়েছে।",
+}, 
+
+{
+  id: "p4",
+  division: "Chattogram",
+  district: "Bandarban",
+  place: "Nilgiri",
+  date: "2025-12-20",
+  duration: "2 Days",
+  experience: "Excellent",
+  rating: 5,
+  featured: false,
+  location: "Bandarban, Bangladesh",
+  cover: "https://picsum.photos/seed/nilgiri/900/600",
+  gallery: [
+    "https://picsum.photos/seed/nilgiri0/800/600",
+    "https://picsum.photos/seed/nilgiri1/800/600",
+    "https://picsum.photos/seed/nilgiri2/800/600",
+    "https://picsum.photos/seed/nilgiri3/800/600",
+    "https://picsum.photos/seed/nilgiri4/800/600",
+  ],
+  description: "মেঘের রাজ্যে এক ভোর।",
+  story: "নীলগিরির চূড়ায় মেঘের ভেতর দাঁড়িয়ে সূর্যোদয় দেখেছি।",
+}, {
+  id: "p5",
+  division: "Chattogram",
+  district: "Rangamati",
+  place: "Kaptai Lake",
+  date: "2025-03-14",
+  duration: "2 Days",
+  experience: "Very Good",
+  rating: 4,
+  featured: false,
+  location: "Rangamati, Bangladesh",
+  cover: "https://picsum.photos/seed/kaptai/900/600",
+  gallery: [
+    "https://picsum.photos/seed/kaptai0/800/600",
+    "https://picsum.photos/seed/kaptai1/800/600",
+    "https://picsum.photos/seed/kaptai2/800/600",
+    "https://picsum.photos/seed/kaptai3/800/600",
+  ],
+  description: "লেকের বুকে নৌকাভ্রমণ।",
+  story: "কাপ্তাই লেকের শান্ত জল আর দুই পাশের সবুজ পাহাড় মন ভরিয়ে দিয়েছে।",
+},
+
+{
+  id: "p6",
+  division: "Dhaka",
+  district: "Dhaka",
+  place: "University of Dhaka",
+  date: "2026-10-09",
+  duration: "1 Day",
+  experience: "Very Good",
+  rating: 4,
+  featured: false,
+  location: "Cox's Bazar, Bangladesh",
+  cover: "./Dhaka’s.png",
+  gallery: [
+    "https://picsum.photos/seed/himchari0/800/600",
+    "https://picsum.photos/seed/himchari1/800/600",
+    "https://picsum.photos/seed/himchari2/800/600",
+    "https://picsum.photos/seed/himchari3/800/600",
+  ],
+  description: "পাহাড়, ঝরনা আর সমুদ্রের মিলনস্থল।",
+  story: "হিমছড়ির পাহাড়ের উপর থেকে সমুদ্র দেখার অনুভূতি অসাধারণ ছিল।",
+}, 
+
+{
+  id: "p7",
+  division: "Sylhet",
+  district: "Sylhet",
+  place: "Ratargul Swamp Forest",
+  date: "2025-07-05",
+  duration: "1 Day",
+  experience: "Excellent",
+  rating: 5,
+  featured: false,
+  location: "Gowainghat, Sylhet",
+  cover: "https://picsum.photos/seed/ratargul/900/600",
+  gallery: [
+    "https://picsum.photos/seed/ratargul0/800/600",
+    "https://picsum.photos/seed/ratargul1/800/600",
+    "https://picsum.photos/seed/ratargul2/800/600",
+    "https://picsum.photos/seed/ratargul3/800/600",
+  ],
+  description: "জলের ওপর ভেসে থাকা বন।",
+  story: "নৌকায় বনের ভেতর দিয়ে যাওয়ার সময় চারপাশ ছিল অদ্ভুত নীরব।",
+}, ];
+const store = structuredClone(DEMO);
+
+/* ---- ৪. সাহায্যকারী ছোট ফাংশন ---- */
+
+/* ╔═══════════════════════════════════════════╗
+   ║ JS-4: ছোট সাহায্যকারী ফাংশন
+   ╚═══════════════════════════════════════════╝ */
+
+/* ==========================================================
+   HELPERS  (small reusable functions)
+   ========================================================== */
+const $ = (s, r = document) => r.querySelector(s),
+  $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = (s) =>
+  String(s ?? "").replace(
+    /[&<>"']/g,
+    (c) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[c],
+  );
+const fmt = (d) => {
+  const x = new Date(d);
+  return isNaN(x) ?
+    d :
+    x.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    });
+};
+const byDiv = (d) => store.filter((p) => p.division === d),
+  byDist = (d, s) => store.filter((p) => p.division === d && p.district === s);
+const visDist = (d) => new Set(byDiv(d).map((p) => p.district)).size;
+const photos = () => store.reduce((n, p) => n + 1 + (p.gallery || []).length, 0);
+const go = (h) => {
+  location.hash = h;
+};
+const H = (...a) => "#/" + a.map(encodeURIComponent).join("/");
+const imgTag = (src, alt) =>
+  `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" onerror="this.style.display='none'">`;
+const empty = (t, m) =>
+  `<div class="empty"><i class="bi bi-compass"></i>
+<h3 class="mt-2">${t}</h3>
+<p>${m}</p>
+</div>`;
+const crumbs = (a) =>
+  `<nav aria-label="breadcrumb">
+<ol class="breadcrumb">${a.map(([t, h], i) => (i == a.length - 1 ? `<li class="breadcrumb-item active" aria-current="page">${esc(t)}</li>` : `<li class="breadcrumb-item"><a href="${h}">${esc(t)}</a>
+</li>`)).join("")}</ol></nav>`;
+const header = (t, sub, cover) =>
+  `<div class="ph" style="background-image:url('${esc(cover)}'),linear-gradient(135deg,#2a2418,#a8741a)">
+<div class="ov">
+<div class="container">
+<h1>${esc(t)}</h1>
+<p class="mb-0">${esc(sub)}</p>
+</div>
+</div>
+</div>`;
+const placeCard = (p) => {
+  const d = new Date(p.date),
+    ok = !isNaN(d);
+  const when = ok ? d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }) : "";
+  return `<div class="col-12 col-sm-6 col-lg-4">
+<button class="pcard" data-open="${p.id}">
+<div class="pc-img">${imgTag(p.cover, p.place)}
+<span class="pc-rate"><i class="bi bi-star-fill"></i> ${p.rating}</span>
+</div>
+<div class="pc-body">
+<div class="pc-meta">${esc(p.district)} · ${when}</div>
+<h3>${esc(p.place)}</h3>
+<p>${esc(p.description)}</p>
+<span class="pc-go">Read memory <i class="bi bi-arrow-right"></i></span>
+</div>
+</button>
+</div>`;
+};
+
+/* ---- ৫. পেজ তৈরির ফাংশন (home, division, district, place, search) ---- */
+
+/* ╔═══════════════════════════════════════════╗
+   ║ JS-5: পেজ/ভিউ: home(), division(), district(), place(), search()
+   ╚═══════════════════════════════════════════╝ */
+
+/* ==========================================================
+   VIEWS  (each function builds one page: home, division, district, place, search)
+   ========================================================== */
+
+function home() {
+  const recent = [...store].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+  const f = store.find((p) => p.featured);
+  const visitedDivs = Object.keys(DIV).filter((d) => byDiv(d).length).length;
+  return `
+<!-- ===== HERO ===== -->
+<div id="top" class="hero">
+<div class="hero-bg"></div>
+<div class="container hero-in">
+<div class="row align-items-center g-5">
+<div class="col-lg-10 in">
+<span class="eyebrow">Personal Travel Diary • Bangladesh</span>
+<h1>ARJU'S <span class="grad">JOURNEY</span></h1>
+<p class="tag">Every Place Has a Story.</p>
+<p class="lead">বাংলাদেশের পথে পথে আমার দেখা জায়গা, ছবি, স্মৃতি ও গল্প।</p>
+<p class="trio">My Places • My Memories • My Stories</p>
+<div class="d-flex gap-2 flex-wrap">
+<button class="btn btn-sea" data-go="journey"><i class="bi bi-compass"></i> Explore My Journey</button>
+<button class="btn btn-ghost" data-go="map"><i class="bi bi-map"></i> Explore Map</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ===== STATISTICS ===== -->
+<div class="container stats">
+<div class="row g-3">
+ ${[
+   [64, "Districts"],
+   [8, "Divisions"],
+   [store.length, "Places Visited"],
+   [photos(), "Photos"],
+ ]
+   .map(
+     ([n, l]) =>
+       `<div class="col-6 col-md-3">
+<div class="stat"><b data-count="${n}">0</b>
+<div class="muted">${l}</div>
+</div>
+</div>`,
+   )
+   .join("")}
+</div>
+</div>
+<!-- ===== DIVISIONS ===== -->
+<section id="journey">
+<div class="container">
+<span class="kicker">Divisions</span>
+<h2 class="sec-h">Explore My Bangladesh</h2>
+<p class="muted">বাংলাদেশের বিভিন্ন বিভাগ ও জেলার মধ্যে আমার ভ্রমণের গল্প খুঁজে দেখুন।</p>
+<div class="rail-btns"><button type="button" data-rail="-1" aria-label="Previous"><i class="bi bi-arrow-left"></i></button><button type="button" data-rail="1" aria-label="Next"><i class="bi bi-arrow-right"></i></button></div>
+<div class="rail" id="rail">${Object.keys(DIV)
+          .map((d, i) => {
+            const ps = byDiv(d);
+            return `<div class="rail-i">
+<button class="dcard rv ${ps.length ? "" : "off"}" data-div="${d}">
+<div class="dc-img">${imgTag(ps[0]?.cover || img("div" + d, 600, 420), DIV[d][0])}
+<span class="num">${String(i + 1).padStart(2, "0")}</span>${ps.length ? '<span class="dot">Visited</span>' : ""}
+</div>
+<div class="dc-body">
+<h3>${DIV[d][0]}</h3>
+<div class="dc-meta"><span><i class="bi bi-signpost-split"></i> ${visDist(d)}/${DISTRICTS[d].length} জেলা</span><span><i class="bi bi-geo-alt"></i> ${ps.length} স্থান</span></div>
+<div class="dc-bar"><i style="width:${Math.round((visDist(d) / DISTRICTS[d].length) * 100)}%"></i></div>
+<span class="dc-go">View division <i class="bi bi-arrow-right"></i></span>
+</div>
+</button>
+</div>`;
+          })
+          .join("")}</div>
+</div>
+</section>
+<!-- ===== FEATURED ===== -->
+${f ? `<section class="pt-0">
+<div class="container">
+<span class="kicker">Featured</span>
+<h2 class="sec-h">Featured Memory</h2>
+<div class="feat" tabindex="0" role="button" data-open="${f.id}" style="background-image:url('${esc(f.cover)}'),linear-gradient(135deg,#2a2418,#a8741a)">
+<div class="ov">
+<h3 class="h2">${esc(f.district)} — ${esc(f.place)}</h3>
+<p class="mb-0">${esc(f.description)}</p>
+</div>
+</div>
+</div>
+</section>` : ""}
+<!-- ===== MAP ===== -->
+<section id="map">
+<div class="container text-center">
+<span class="kicker">Map</span>
+<h2 class="sec-h">My Bangladesh Journey</h2>
+<p class="muted">বাংলাদেশের মানচিত্রে দেখে নিন আমি কোথায় কোথায় ভ্রমণ করেছি।</p>
+<div class="map-wrap"><svg viewBox="0 0 300 423.7" role="img" aria-label="Bangladesh division map">${Object.entries(
+          MAPREAL.divs,
+        )
+          .map(([d, o]) => {
+            const v = byDiv(d).length;
+            return `<path class="dv ${v ? "vis" : ""}" data-div="${d}" d="${o.d}" tabindex="0" role="link" aria-label="${d} division"><title>${d}: ${v} places</title></path><text class="${v ? "v" : ""}" x="${o.c[0]}" y="${o.c[1]}" text-anchor="middle">${d}</text>`;
+          })
+          .join("")}</svg>
+<p class="small muted mt-2">Glowing = visited (${visitedDivs}/8). Tap a division to open it.</p>
+</div>
+</div>
+</section>
+<!-- ===== LATEST MEMORIES ===== -->
+<section id="memories">
+<div class="container">
+<span class="kicker">Memories</span>
+<h2 class="sec-h">Latest Travel Memories</h2>
+<p class="muted">সর্বশেষ যোগ করা ভ্রমণ-স্মৃতিগুলো।</p>
+<div class="row g-3">${recent.map(placeCard).join("") || empty("No Memories Yet", "এখনো কোনো ভ্রমণের স্মৃতি যোগ করা হয়নি।")}</div>
+</div>
+</section>`;
+}
+
+function division(d) {
+  if (!DIV[d]) return empty("Not found", "এই বিভাগটি পাওয়া যায়নি।");
+  const ps = byDiv(d),
+    vis = new Set(ps.map((p) => p.district));
+  return (
+    header(
+      d + " Division",
+      `আমার দেখা ${DIV[d][0]}র বিভিন্ন জেলার স্মৃতি।`,
+      ps[0]?.cover || img("div" + d, 1600, 700),
+    ) +
+    `<div class="container">${crumbs([
+            ["Home", "#/"],
+            [d, ""],
+          ])}
+ ${ps.length ? "" : empty("No Memories Yet", "এই বিভাগে এখনো কোনো ভ্রমণের স্মৃতি যোগ করা হয়নি।")}
+<div class="row g-3 pb-5">${DISTRICTS[d]
+            .map((s) => {
+              const n = byDist(d, s);
+              return `<div class="col-12 col-sm-6 col-lg-4"><button class="kcard ${n.length ? "on" : ""}" data-dist="${esc(s)}" data-div="${d}"><span class="av">${imgTag(n[0]?.cover || img("d" + s, 200, 200), s)}</span><span>
+<h3>${esc(s)}</h3><span class="${n.length ? "badge-v" : "badge-n"}">${n.length ? "Visited" : "Not yet"}</span> <span class="small muted">${n.length} places</span></span></button>
+</div>`;
+            })
+            .join("")}</div>
+</div>`
+  );
+}
+
+function district(d, s) {
+  const ps = byDist(d, s);
+  return (
+    header(s + " District", "My Places in " + s, ps[0]?.cover || img("d" + s, 1600, 700)) +
+    `<div class="container">${crumbs([
+            ["Home", "#/"],
+            [d, H("div", d)],
+            [s, ""],
+          ])}<h2 class="sec-h mb-3">My Places in ${esc(s)}</h2>
+ <div class="row g-3 pb-5">${ps.map(placeCard).join("") || empty("No Memories Yet", "এই জেলায় এখনো কোনো স্মৃতি যোগ করা হয়নি।")}</div>
+</div>`
+  );
+}
+
+function place(id) {
+  const p = store.find((x) => x.id === id);
+  if (!p)
+    return `<div class="container">${empty("Memory not found", "এই স্মৃতিটি পাওয়া যায়নি।")}</div>`;
+  const mapEl =
+    GOOGLE_MAPS_API_KEY && GOOGLE_MAPS_API_KEY !== "YOUR_API_KEY" ?
+    `<iframe title="Map" class="w-100 border-0 rounded-4" height="320" loading="lazy" src="https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(p.place + ", " + p.location)}"></iframe>` :
+    `<div class="info text-center py-5"><i class="bi bi-geo-alt-fill"></i>
+<p class="mb-1 mt-2">${esc(p.location)}</p><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.place + " " + p.location)}">Open in Google Maps</a>
+<div class="small muted mt-1">Add GOOGLE_MAPS_API_KEY to embed the map here.</div>
+</div>`;
+  const info = [
+    ["bi-geo-alt", "Location", p.location],
+    ["bi-calendar3", "Visit Date", fmt(p.date)],
+    ["bi-clock", "Duration", p.duration],
+    ["bi-sun", "Experience", p.experience],
+    ["bi-star-fill", "My Rating", p.rating + "/5"],
+  ];
+  return `<div class="container">${crumbs([
+          ["Home", "#/"],
+          [p.division, H("div", p.division)],
+          [p.district, H("div", p.division, p.district)],
+          [p.place, ""],
+        ])}
+ <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
+<div>
+<h1>${esc(p.place)}</h1>
+<p class="muted">${esc(p.location)} • Visited: ${p.date.slice(0, 4)}</p>
+</div>
+</div>
+ <div class="rounded-4 overflow-hidden mb-4" style="aspect-ratio:16/8;background:var(--line)">${imgTag(p.cover, p.place).replace("<img", '<img style="width:100%;height:100%;object-fit:cover"')}</div>
+ <div class="row g-3 mb-4">${info.map(([i, l, v]) => `<div class="col-6 col-md">
+<div class="info"><i class="bi ${i}"></i>
+<div class="small muted">${l}</div><b>${esc(v)}</b>
+</div>
+</div>`).join("")}</div>
+ <h2 class="h3">My Travel Story</h2>
+<p class="story">${esc(p.story || p.description)}</p>
+ ${p.gallery.length ? `<h2 class="h3 mt-4">Photo Gallery</h2>
+<div class="gal mb-4">${p.gallery.map((u, i) => `<button data-lb="${i}" aria-label="Open photo ${i + 1}">${imgTag(u, p.place + " photo " + (i + 1))}</button>`).join("")}</div>` : ""}
+ <h2 class="h3">Location</h2>
+<div class="pb-5">${mapEl}</div>
+</div>`;
+}
+
+function search(q) {
+  const t = q.toLowerCase();
+  const dv = Object.keys(DIV).filter((d) => (d + DIV[d][0]).toLowerCase().includes(t));
+  const ds = Object.entries(DISTRICTS).flatMap(([d, a]) =>
+    a.filter((s) => s.toLowerCase().includes(t)).map((s) => [d, s]),
+  );
+  const ps = store.filter((p) => [p.place, p.description, p.story, p.district].join(" ").toLowerCase().includes(t), );
+  const none = !dv.length && !ds.length && !ps.length;
+  return `<div class="container py-4">
+<h1 class="h3">Results for “${esc(q)}”</h1>${none ? empty("Nothing found", "অন্য কোনো শব্দ দিয়ে খুঁজে দেখুন।") : ""}
+ ${dv.length ? `<h2 class="h5 mt-3">Divisions</h2>${dv.map((d) => `<a class="chip d-inline-block" href="${H("div", d)}">${d}</a>`).join("")}` : ""}
+ ${
+   ds.length
+     ? `<h2 class="h5 mt-3">Districts</h2>${ds
+         .slice(0, 20)
+         .map(([d, s]) => `<a class="chip d-inline-block" href="${H("div", d, s)}">${esc(s)}</a>`)
+         .join("")}`
+     : ""
+ }
+ ${ps.length ? `<h2 class="h5 mt-3">Places & Memories</h2>
+<div class="row g-3">${ps.map(placeCard).join("")}</div>` : ""}</div>`;
+}
+/* ---- ৭. রাউটার: লিংক অনুযায়ী পেজ দেখায় ---- */
+
+/* ╔═══════════════════════════════════════════╗
+   ║ JS-7: ROUTER (পেজ বদল), Lightbox, Search bar, Dark mode
+   ╚═══════════════════════════════════════════╝ */
+
+/* ==========================================================
+   ROUTER  (decides which page to show from the URL #/...)
+   ========================================================== */
+let cur = null;
+
+function render() {
+  const [, r, a, b] = location.hash.split("/").map(decodeURIComponent);
+  const app = $("#app");
+  app.style.animation = "none";
+  app.offsetWidth;
+  app.style.animation = "rise .45s ease both";
+  if (r == "div" && a && b) app.innerHTML = district(a, b);
+  else if (r == "div") app.innerHTML = division(a);
+  else if (r == "place")((app.innerHTML = place(a)), (cur = store.find((p) => p.id === a)));
+  else app.innerHTML = home();
+  document.title = "Arju's Journey | My Travel Memories";
+  bind();
+}
+
+/* ==========================================================
+   SMART NAV  (scroll progress bar + solid navbar after scroll + division rail arrows)
+   ========================================================== */
+function onScroll() {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  $("#prog").style.width = (max > 0 ? (scrollY / max) * 100 : 0) + "%";
+  $(".nav-top").classList.toggle("solid", scrollY > 60);
+}
+addEventListener("scroll", onScroll, { passive: true });
+
+function bind() {
+  document.body.classList.toggle("over-hero", !!$(".hero, .ph"));
+  onScroll();
+  $$("[data-rail]").forEach((b) => (b.onclick = () => $("#rail").scrollBy({ left: +b.dataset.rail * 300, behavior: "smooth" })));
+  $$("[data-div]:not([data-dist])").forEach((e) => {
+    e.onclick = () => go(H("div", e.dataset.div));
+    e.onkeydown = (ev) => {
+      if (ev.key == "Enter") e.onclick();
+    };
+  });
+  $$("[data-dist]").forEach(
+    (e) => (e.onclick = () => go(H("div", e.dataset.div, e.dataset.dist))),
+  );
+  $$("[data-open]").forEach((e) => {
+    e.onclick = () => go(H("place", e.dataset.open));
+    e.onkeydown = (ev) => {
+      if (ev.key == "Enter") e.onclick();
+    };
+  });
+  $$("[data-lb]").forEach((e) => (e.onclick = () => lbOpen(+e.dataset.lb)));
+  // counters + reveal
+  const io = new IntersectionObserver(
+    (es) =>
+    es.forEach((x) => {
+      if (!x.isIntersecting) return;
+      io.unobserve(x.target);
+      const t = x.target;
+      if (t.dataset.count) {
+        const n = +t.dataset.count,
+          s = performance.now();
+        (function f(now) {
+          const k = Math.min((now - s) / 1200, 1);
+          t.textContent = Math.round(n * k) + (n >= 250 ? "+" : "");
+          if (k < 1) requestAnimationFrame(f);
+        })(s);
+      } else t.classList.add("on");
+    }), {
+      threshold: 0.2
+    },
+  );
+  $$("[data-count],.rv").forEach((e) => io.observe(e));
+}
+
+/* About মডেল খোলে; সংখ্যাগুলো তখনই হিসাব হয় */
+function openAbout() {
+  const vd = Object.keys(DIV).filter((d) => byDiv(d).length);
+  $("#ab-places").textContent = store.length;
+  $("#ab-photos").textContent = photos();
+  $("#ab-divs").textContent = vd.length + "/8";
+  $("#ab-meta").textContent = "Bangladesh · " + store.length + " places · " + vd.length + "/8 divisions";
+  const recent = [...store].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
+  $("#ab-list").innerHTML =
+    recent
+      .map(
+        (p) =>
+          `<button class="exp" data-open="${p.id}"><img src="${esc(p.cover)}" alt="" loading="lazy"><span><b>${esc(p.place)}</b><small>${esc(p.district)} · ${esc(p.division)}</small><small>${fmt(p.date)}${p.duration ? " · " + esc(p.duration) : ""}</small></span></button>`,
+      )
+      .join("") || '<p class="muted mb-0">এখনো কোনো স্মৃতি যোগ করা হয়নি।</p>';
+  $("#ab-skills").innerHTML = Object.keys(DIV)
+    .map((d) => `<span class="skill ${byDiv(d).length ? "on" : ""}">${byDiv(d).length ? '<i class="bi bi-check2"></i> ' : ""}${d}</span>`)
+    .join("");
+  const modal = bootstrap.Modal.getOrCreateInstance($("#aboutModal"));
+  $$("#ab-list .exp").forEach(
+    (b) =>
+      (b.onclick = () => {
+        modal.hide();
+        go(H("place", b.dataset.open));
+      }),
+  );
+  modal.show();
+}
+
+/* ==========================================================
+   NAVIGATION  (menu buttons scroll to Home sections)
+   ========================================================== */
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-go]");
+  if (!t) return;
+  e.preventDefault();
+  const m = bootstrap.Offcanvas.getInstance($("#menu"));
+  m && m.hide();
+  if (t.dataset.go == "about") {
+    openAbout();
+    return;
+  }
+  const run = () => {
+    const el = t.dataset.go == "top" ? document.body : document.getElementById(t.dataset.go);
+    el.scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+  if (location.hash && location.hash != "#/") {
+    go("#/");
+    setTimeout(run, 150);
+  } else run();
+});
+
+/* ==========================================================
+   SEARCH  (typing in the bar shows results)
+   ========================================================== */
+const sb = $("#sbar");
+$("#sbtn").onclick = () => {
+  sb.hidden = !sb.hidden;
+  $("#sbtn").setAttribute("aria-expanded", !sb.hidden);
+  if (!sb.hidden) $("#q").focus();
+  else if ($("#q").value) {
+    $("#q").value = "";
+    render();
+  }
+};
+$("#q").addEventListener("keydown", (e) => {
+  if (e.key == "Escape") $("#sbtn").click();
+});
+$("#q").addEventListener("input", (e) => {
+  const v = e.target.value.trim();
+  if (v) {
+    $("#app").innerHTML = search(v);
+    bind();
+  } else render();
+});
+
+/* ==========================================================
+   LIGHTBOX  (full-screen photo gallery)
+   ========================================================== */
+let li = 0;
+const lb = $("#lb");
+
+function lbShow() {
+  const g = cur.gallery;
+  $("img", lb).src = g[li];
+  $("img", lb).alt = cur.place + " photo " + (li + 1);
+  $(".c", lb).textContent = li + 1 + " / " + g.length;
+}
+
+function lbOpen(i) {
+  li = i;
+  lbShow();
+  lb.classList.add("on");
+  if (lb.requestFullscreen) lb.requestFullscreen().catch(() => {});
+  $(".x", lb).focus();
+}
+
+function lbClose() {
+  lb.classList.remove("on");
+  document.fullscreenElement && document.exitFullscreen();
+}
+const step = (d) => {
+  li = (li + d + cur.gallery.length) % cur.gallery.length;
+  lbShow();
+};
+$(".x", lb).onclick = lbClose;
+$(".p", lb).onclick = () => step(-1);
+$(".n", lb).onclick = () => step(1);
+document.addEventListener("keydown", (e) => {
+  if (!lb.classList.contains("on")) return;
+  if (e.key == "Escape") lbClose();
+  if (e.key == "ArrowLeft") step(-1);
+  if (e.key == "ArrowRight") step(1);
+});
+let sx = 0;
+lb.addEventListener("touchstart", (e) => (sx = e.touches[0].clientX), {
+  passive: true
+});
+lb.addEventListener("touchend", (e) => {
+  const d = e.changedTouches[0].clientX - sx;
+  if (Math.abs(d) > 50) step(d > 0 ? -1 : 1);
+});
+
+/* ==========================================================
+   DARK / LIGHT MODE  (saved in localStorage)
+   ========================================================== */
+const setTheme = (t) => {
+  document.documentElement.dataset.bsTheme = t;
+  $("#theme i").className = "bi " + (t == "dark" ? "bi-sun" : "bi-moon-stars");
+  try {
+    localStorage.setItem("arju_theme", t);
+  } catch (e) {}
+};
+try {
+  setTheme(localStorage.getItem("arju_theme") || "dark");
+} catch (e) {}
+$("#theme").onclick = () =>
+  setTheme(document.documentElement.dataset.bsTheme == "dark" ? "light" : "dark");
+addEventListener("hashchange", () => {
+  $("#q").value = "";
+  sb.hidden = true;
+  render();
+  scrollTo(0, 0);
+});
+render();
+</script>
+  </body>
+</html>
